@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "e-commerce-app",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ultreck/e-commerce-app-nodejs.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "full-stack"
+  ],
+  "author": "A. Emmanuel Oluwatayese",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ultreck/e-commerce-app-nodejs/issues"
+  },
+  "homepage": "https://github.com/Ultreck/e-commerce-app-nodejs#readme",
+  "dependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
