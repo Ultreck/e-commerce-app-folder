@@ -24,7 +24,7 @@ const SecondNavbar = () => {
     <div
       className={`${
         isScrolled > 60 && "sticky top-0"
-      } border-b bg-white px-16 flex py-4 sticky top-0  justify-between items-center`}
+      } border-b z-20 bg-white px-16 flex py-4 sticky top-0  justify-between items-center`}
     >
       <div className="text flex gap-4">
         <DropdownElement />

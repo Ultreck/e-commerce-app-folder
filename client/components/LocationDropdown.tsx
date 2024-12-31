@@ -45,7 +45,7 @@ const LocationDropdown = () => {
           className=""
         >
           <DropdownMenuTrigger className="outline-none">
-            <div className="text bg-amber-500/20 hover:bg-golden hover:text-white cursor-pointer rounded h-10 w-16 flex items-center justify-between p-1">
+            <div className="text bg-amber-700/20 hover:bg-golden hover:text-white cursor-pointer rounded h-10 w-16 flex items-center justify-between p-1">
               <div className="text h-8 w-8 rounded-full">
                 <img
                   src={userLocation?.flag}

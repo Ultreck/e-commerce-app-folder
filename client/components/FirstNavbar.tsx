@@ -13,7 +13,7 @@ const FirstNavbar = () => {
 
   return (
     <div
-      className={`bg-white border-b px-16 py-1 flex justify-between`}
+      className={`bg-white border-b px-16 z-20 py-1 flex justify-between`}
     >
       <div className="text flex items-center justify-center w-1/2 gap-10">
         <div className="text">
@@ -38,7 +38,7 @@ const FirstNavbar = () => {
             }} 
             onMouseLeave={() => setIsHovered(false)} className="dark:text-white text-gray-700 gap-2 relative flex items-center ">
           <FaRegHeart className="text-3xl text-black dark:text-white" />
-          <span className={`text-white w-6 h-6 rounded-full flex items-center justify-center bg-amber-500 ${isHovered && index === 1 && "bg-golden"} p-1 absolute left-4 -top-4`}>
+          <span className={`text-white w-6 h-6 rounded-full flex items-center justify-center bg-amber-700 ${isHovered && index === 1 && "bg-golden"} p-1 absolute left-4 -top-4`}>
             0
           </span>
           Wishlist
@@ -49,7 +49,7 @@ const FirstNavbar = () => {
             }} onMouseLeave={() => setIsHovered(false)}  className="dark:text-white gap-2 relative flex items-center">
           <MdOutlineShoppingCart className="text-3xl text-black dark:text-white" />
           Cart
-            <span className={`text-white w-6 h-6 rounded-full flex items-center justify-center ${isHovered && index === 2 && "bg-golden"} bg-amber-500 p-1 absolute left-3 -top-4`}>
+            <span className={`text-white w-6 h-6 rounded-full flex items-center justify-center ${isHovered && index === 2 && "bg-golden"} bg-amber-700 p-1 absolute left-3 -top-4`}>
             0
           </span>
         </button>

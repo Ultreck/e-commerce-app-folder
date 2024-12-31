@@ -30,7 +30,7 @@ const AccountModalDialog = () => {
           <div 
           className="text cursor-pointer rounded-full flex items-center border">
             <div
-              className={`bg-amber-500 ${
+              className={`bg-amber-700 ${
                 isOpen && "bg-golden"
               } p-0 rounded-full w-full h-full text-white relative overflow-hidden group`}
             >
