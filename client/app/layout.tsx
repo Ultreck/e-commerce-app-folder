@@ -5,6 +5,7 @@ import NextSessionWrapper from "@/components/NextSessionWrapper";
 import FirstNavbar from "@/components/FirstNavbar";
 import SecondNavbar from "@/components/SecondNavbar";
 import SliderComponent from "@/components/SliderComponent";
+import Footer from "@/components/Footer";
 
 
 const workSans = localFont({
@@ -79,6 +80,7 @@ export default function RootLayout({
           <SecondNavbar/>
           {/* <SliderComponent/> */}
           {children}
+          <Footer/>
         </body>
       </html>
     </NextSessionWrapper>

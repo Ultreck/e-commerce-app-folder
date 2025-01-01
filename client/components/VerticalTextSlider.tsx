@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { sliderType } from "@/types/typeFiles";
 
-const VerticalTextSlider = ({data, delayValue}) => {
-  const texts = ["Welcome", "To", "Our", "Awesome", "Website"];
+const VerticalTextSlider: React.FC<sliderType> = ({ data, delayValue }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
     }, 2000);
-console.log(currentIndex);
 
     return () => clearInterval(interval);
   }, [data.length]);
@@ -22,10 +21,10 @@ console.log(currentIndex);
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -50, opacity: 0 }}
-          transition={{ 
+          transition={{
             duration: 0.5,
             delay: delayValue,
-         }}
+          }}
           className="text-sm font-semibold text-amber-600"
         >
           {data[currentIndex]}

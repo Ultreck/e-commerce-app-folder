@@ -23,6 +23,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay"
 // import { LuLoader } from "react-icons/lu";
 
 const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
@@ -31,7 +32,9 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedSize, setSelectedSize] = useState<number>();
   const scrollAreaRef = useRef(null);
-
+ const plugin = React.useRef(
+      Autoplay({ delay: 1500, stopOnInteraction: true })
+    );
   useEffect(() => {
     if (!api) {
       return;
@@ -87,13 +90,18 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
           <DialogTitle></DialogTitle>
           <div className="text grid grid-cols-1 md:grid-cols-2 w-full">
             <div className="text">
-              <Carousel setApi={setApi} className="w-4/5 mx-auto ">
+              <Carousel 
+              plugins={[plugin.current]}
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+              setApi={setApi} 
+              className="w-4/5 mx-auto ">
                 <CarouselContent>
                   {data.imgs.map((url, index) => (
                     <CarouselItem key={index}>
                       <div className="">
                         <Image
-                        //  loader={url.src}
+                          //  loader={url.src}
                           src={url.src}
                           width={420}
                           height={400}
@@ -175,7 +183,7 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                                 height={100}
                                 alt="Product image"
                               />
-                             
+
                               <span className="flex text-xs mt-1">
                                 <AiFillFire className="text-amber-700" /> Mixed
                                 Color {index + 1}
@@ -208,9 +216,11 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                   {data.color.length > 0 && (
                     <div className="text flex mt-5">
                       <h1 className="text-black font-semibold mr-1">Color: </h1>
-                        <div  className="text">
-                          <span className="text mr-1">{data.color.join(", ")}</span>
-                        </div>
+                      <div className="text">
+                        <span className="text mr-1">
+                          {data.color.join(", ")}
+                        </span>
+                      </div>
                     </div>
                   )}
                   {data.ukSize.length > 0 || data.stdSize.length > 0 ? (

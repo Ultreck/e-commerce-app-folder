@@ -21,3 +21,8 @@ interface ItemData {
     data: ItemData;
     children?: React.ReactNode;
   };
+
+  export interface sliderType {
+    data: string[];
+    delayValue: number;
+  }

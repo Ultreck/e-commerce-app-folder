@@ -8,10 +8,17 @@ import { GrShieldSecurity } from "react-icons/gr";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import { TbCurrencyNaira } from "react-icons/tb";
+// import { TbCurrencyNaira } from "react-icons/tb";
 
+import banner0 from "../assets/images/banner0.jpg"
+import banner1 from "../assets/images/banner1.jpg"
+import banner2 from "../assets/images/banner2.jpg"
+import banner3 from "../assets/images/banmer3.jpg"
+import banner4 from "../assets/images/banner4.jpg"
+import banner5 from "../assets/images/banner5.jpg"
+import banner6 from "../assets/images/banner6.jpg"
 
-
+export const heroCarousel = [banner0, banner1, banner2, banner3, banner4, banner5, banner6]
 export const categories = [
   "Featured",
   "Home & Kitchen",
@@ -268,7 +275,7 @@ export const countriesWithFlagURLs = [
   { name: "Zimbabwe", flag: "https://flagcdn.com/w320/zw.png", currencyCode: "ZWL" }
 ];
 
-function getRandomNumber(min = 0.1, max = 0.9) {
+export function getRandomNumber(min = 0.1, max = 0.9) {
   return +(Math.random() * (max - min) + min).toFixed(1);
 }
 
