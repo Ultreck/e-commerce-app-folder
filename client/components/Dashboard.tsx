@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import ItemsCard from "./ItemsCard";
 import { itemsDummyData } from "@/utils/helper";
 import HomeProgressBar from "./HomeProgressBar";
+import { CardDataType } from "@/types/typeFiles";
 
-const Dashboard = () => {
+const Dashboard: React.FC<CardDataType> = () => {
 
   return (
     <>

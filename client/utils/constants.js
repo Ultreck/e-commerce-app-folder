@@ -284,3 +284,14 @@ export const ratingLabels = {
   4.5: 'Excellent',
   5: 'Excellent+',
 };
+
+export const sizeTabs = [
+  {
+    id: "uk",
+    label: "Uk Size",
+  },
+  {
+    id: "standard",
+    label: "Standard Size",
+  },
+];

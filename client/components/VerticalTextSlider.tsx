@@ -26,7 +26,7 @@ console.log(currentIndex);
             duration: 0.5,
             delay: delayValue,
          }}
-          className="text-sm  text-amber-600"
+          className="text-sm font-semibold text-amber-600"
         >
           {data[currentIndex]}
         </motion.div>

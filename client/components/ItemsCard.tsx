@@ -15,6 +15,8 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdAddShoppingCart } from "react-icons/md";
 import { IoEye } from "react-icons/io5";
 import CardModalDialog from "./CardModalDialog";
+import { CardDataType } from "@/types/typeFiles";
+import Image from "next/image";
 
 type ItemData = {
   id: string;
@@ -29,12 +31,15 @@ type ItemData = {
   compactibleModel: string[];
   review: string;
   rating: number;
+  ukSize: string[];
+  stdSize: string[];
+  color: string;
 };
 type ItemsCardProps = {
   data: ItemData;
 };
 
-const ItemsCard: React.FC<ItemsCardProps> = ({ data }) => {
+const ItemsCard: React.FC<CardDataType> = ({ data }) => {
   const [isAddedToWishlist, setIsAddedToWishlist] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const toggleWishlist = () => {
@@ -49,7 +54,13 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data }) => {
     >
       <CardContent className="p-0 pb-5">
         <div className="text relative">
-          <img src={data.imgs[0].src} alt="" className="text w-full h-60" />
+          <img src={data.imgs[0].src} alt="" className="text w-full h-72" />
+          {/* <Image
+            src={data.imgs[0].src}
+            width={280}
+            height={380}
+            alt="Picture of the author"
+          /> */}
           <div className="text absolute  bottom-0 px-2">
             {isHovered && (
               <CardModalDialog data={data}>
@@ -85,8 +96,8 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data }) => {
           </p>
           <p className="text flex items-center text-gray-400">
             <del>
-              <span className="text p-0 mx-0 text-md">₦</span>
-              <span className="text p-0 mx-0 text-md">
+              <span className="text p-0 mx-0 text-sm">₦</span>
+              <span className="text p-0 mx-0 text-sm">
                 {data.iPrice.toLocaleString()}
               </span>
             </del>
@@ -109,11 +120,11 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data }) => {
                 <AiOutlineHeart size={24} color="gray" />
               )}
             </button>
-            <button className="text">
+            <div className="text cursor-pointer">
               <CardModalDialog data={data}>
                 <MdAddShoppingCart size={24} className="text-gray-500" />
               </CardModalDialog>
-            </button>
+            </div>
           </div>
         </div>
       </CardContent>
