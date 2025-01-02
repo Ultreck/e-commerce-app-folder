@@ -24,6 +24,7 @@ import { FaMinus } from "react-icons/fa6";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay"
+import Link from "next/link";
 // import { LuLoader } from "react-icons/lu";
 
 const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
@@ -143,7 +144,7 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
             </div>
             <div className="text-gray-500 p-5 mt-5 md:mt-0 text-sm">
               <div className="text w-full">
-                <p className="text-sm break-words">{data.description}</p>
+                <p className="text-sm tracking-wider break-words">{data.description}</p>
                 <p className="text-gray-400 my-1">{data.noSold}</p>
                 <div className="text flex items-center gap-5">
                   <span className="text">
@@ -308,8 +309,10 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                     </span>
                   </button>
                 </div>
-                <button className="text flex items-center mt-3">
-                  See full details <IoChevronForward />
+                <button className="text mt-3">
+                  <Link className="flex items-center tracking-[0.1em] text-[#23941A] font-semibold" href={`/product-details/${data.id}`}>
+                  See full details <IoChevronForward className="animate-pulse" />
+                  </Link>
                 </button>
               </div>
             </div>
