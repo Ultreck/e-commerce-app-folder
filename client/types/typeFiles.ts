@@ -26,3 +26,10 @@ interface ItemData {
     data: string[];
     delayValue: number;
   }
+
+  export interface ratingType {
+    rating: number;
+  }
+  export interface tabType {
+    data: string[];
+  }

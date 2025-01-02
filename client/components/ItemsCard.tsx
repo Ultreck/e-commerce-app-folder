@@ -16,7 +16,6 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { IoEye } from "react-icons/io5";
 import CardModalDialog from "./CardModalDialog";
 import { CardDataType } from "@/types/typeFiles";
-import Image from "next/image";
 import Link from "next/link";
 
 // type ItemData = {
@@ -57,12 +56,6 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
         <div className="text relative">
           <Link href={`/product-details/${data.id}`}>
             <img src={data.imgs[0].src} alt="" className="text w-full h-72" />
-            {/* <Image
-            src={data.imgs[0].src}
-            width={280}
-            height={380}
-            alt="Picture of the author"
-            /> */}
           </Link>
           <div className="text absolute  bottom-0 px-2">
             {isHovered && (

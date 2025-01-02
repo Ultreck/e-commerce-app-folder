@@ -4,6 +4,10 @@ import { GrDeliver } from "react-icons/gr";
 import { RiDiscountPercentLine } from "react-icons/ri";
 import { CiBadgeDollar } from "react-icons/ci";
 import Link from "next/link";
+import { FaTwitter } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { IoLogoInstagram } from "react-icons/io";
+
 const Footer = () => {
   return (
     <div className="px-10 pb-16">
@@ -113,8 +117,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="text">
-          <h1 className="text-amber-600">BREADS & BAKERY
-          </h1>
+          <h1 className="text-amber-600">BREADS & BAKERY</h1>
           <ul className="text-sm text-gray-600">
             {[
               "Fresh Vegetables",
@@ -134,6 +137,20 @@ const Footer = () => {
             ))}
           </ul>
         </div>
+      </div>
+      <div className="text w-full flex justify-between mt-7 items-center">
+        <p className="text">Copyright 2024. All rights reserved</p>
+        <p className="text flex justify-between items-center gap-2">
+          <span className="text">
+            <FaFacebookF />
+          </span>
+          <span className="text">
+            <FaTwitter />
+          </span>
+          <span className="text">
+            <IoLogoInstagram />
+          </span>
+        </p>
       </div>
     </div>
   );

@@ -1,18 +1,19 @@
-import React from 'react'
-import {Tabs, Tab} from "@nextui-org/react";
+import React from "react";
+import { Tabs, Tab } from "@nextui-org/react";
+import { tabType } from "@/types/typeFiles";
 
-const TabComponent = ({data}) => {
-    console.log(data);
-    
+const TabComponent: React.FC<tabType> = ({ data }) => {
+  console.log(data);
+
   return (
     <div className="flex flex-wrap gap-4">
-      {data.map((item) => (
+      {data.map((item, index) => (
         <Tabs key={index} aria-label="Tabs variants" variant={"bordered"}>
           <Tab key={item} title={item} />
         </Tabs>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default TabComponent
+export default TabComponent;
