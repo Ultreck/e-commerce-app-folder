@@ -141,15 +141,15 @@ const Footer = () => {
       <div className="text w-full flex justify-between mt-7 items-center">
         <p className="text">Copyright 2024. All rights reserved</p>
         <p className="text flex justify-between items-center gap-2">
-          <span className="text">
-            <FaFacebookF />
-          </span>
-          <span className="text">
-            <FaTwitter />
-          </span>
-          <span className="text">
-            <IoLogoInstagram />
-          </span>
+          <Link className="text border p-2 rounded-full"  href={"/"}>
+              <FaFacebookF className="text-blue-600" />
+          </Link>
+          <Link className="text border p-2 rounded-full" href={"/"}>
+              <FaTwitter className="text-blue-600" />
+          </Link>
+          <Link className="text border p-2 rounded-full" href={"/"}>
+              <IoLogoInstagram className="text-purple-600" />
+          </Link>
         </p>
       </div>
     </div>

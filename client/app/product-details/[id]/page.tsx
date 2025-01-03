@@ -114,12 +114,12 @@ const ProductDetailsPage = ({ params }) => {
             <CarouselNext />
           </Carousel>
         </div>
-        <div className="text-gray-500 pl-5 lg:pr-16 mt-5 md:mt-0 text-sm">
+        <div className="text-gray-500 pl-5 lg:pr-16 pt-5 md:mt-0 text-sm">
           <div className="text w-full">
             <span className="text-sm font-light  break-words">
               {data?.description}
             </span>
-            <span className="text-gray-400 my-1 flex items-center justify-between mt-3">
+            <span className="text-gray-400 my-1 flex items-center justify-between mt-1">
               <span className="text">{data?.noSold}</span>
               <span className="text-black text-xl w-40 font-medium gap-1 flex items-center">
                 {data?.rating}

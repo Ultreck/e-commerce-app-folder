@@ -6,6 +6,7 @@ import LocationField from "./LocationField";
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import SignInButton from "./SignInButton";
+import Link from "next/link";
 
 const FirstNavbar = () => {
  const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -17,12 +18,14 @@ const FirstNavbar = () => {
     >
       <div className="text flex items-center justify-center w-1/2 gap-10">
         <div className="text">
+          <Link href={'/'}>
           <img
             src="/final-copy.png"
             width={180}
             height={180}
             alt="Picture of the author"
-          />
+            />
+            </Link>
         </div>
         <div className="text w-3/5">
           <SearchProduct />
