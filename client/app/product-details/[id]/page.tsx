@@ -20,6 +20,11 @@ import useProductData from "@/hooks/useProductData";
 import RatingComponent from "@/components/RatingComponent";
 import { IoMdCheckmark } from "react-icons/io";
 import ItemsCard from "@/components/ItemsCard";
+import { GrDeliver } from "react-icons/gr";
+import { SiSpringsecurity } from "react-icons/si";
+import { FaUserAlt } from "react-icons/fa";
+import { userCartItemsStore } from "@/store/cartItems";
+import { toast } from "react-toastify";
 
 interface ItemData {
   id: string;
@@ -41,13 +46,14 @@ interface ItemData {
 
 const ProductDetailsPage = ({ params }) => {
   const { id } = React.use(params);
-
+  const addCartItem = userCartItemsStore((state) => state.addCartItem);
+  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   const [data, setData] = useState<ItemData | undefined>(undefined);
   useEffect(() => {
     const found = itemsDummyData.find((item) => item.id === id);
-    console.log(found);
     setData(found);
   }, [id]);
+
   const {
     scrollAreaRef,
     selectedSize,
@@ -62,60 +68,153 @@ const ProductDetailsPage = ({ params }) => {
   return (
     <div>
       <div className="text grid grid-cols-1 md:grid-cols-2 mt-2 w-full">
-        <div className="text flex pl-5 mt-5">
-          <div className="text">
-            <ScrollArea
-              ref={scrollAreaRef}
-              className="w- whitespace-nowrap rounded-md"
+        <div className="text">
+          <div className="text flex pl-5 mt-5">
+            <div className="text">
+              <ScrollArea
+                ref={scrollAreaRef}
+                className="w- whitespace-nowrap rounded-md"
+              >
+                <div className="text">
+                  {data?.imgs?.map((url, index) => (
+                    <div
+                      className={`w-16 h-16 cursor-pointer ${
+                        index === current
+                          ? "border-amber-700 border-2 rounded brightness-150 drop-shadow-md"
+                          : "contrast-50  brightness-100"
+                      }  p-1 overflow-hidden`}
+                      key={index}
+                    >
+                      <Image
+                        src={url.src}
+                        width={60}
+                        height={60}
+                        alt="Product image"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
+            </div>
+            <Carousel
+              plugins={[plugin.current]}
+              // onMouseEnter={plugin.current.stop}
+              // onMouseLeave={plugin.current.reset}
+              setApi={setApi}
+              className="w-4/5 mx-auto "
             >
-              <div className="text">
-                {data?.imgs?.map((url, index) => (
-                  <div
-                    className={`w-16 h-16 ${
-                      index === current && "border-amber-700 border-2 rounded"
-                    }  p-1 overflow-hidden`}
-                    key={index}
-                  >
-                    <Image
-                      src={url.src}
-                      width={60}
-                      height={60}
-                      alt="Product image"
-                    />
-                  </div>
+              <CarouselContent>
+                {data?.imgs.map((url, index) => (
+                  <CarouselItem key={index}>
+                    <div className="">
+                      <Image
+                        src={url.src}
+                        width={100}
+                        height={60}
+                        layout="responsive"
+                        alt="Product image"
+                      />
+                    </div>
+                  </CarouselItem>
                 ))}
-              </div>
-              <ScrollBar orientation="horizontal" />
-            </ScrollArea>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
-          <Carousel
-            plugins={[plugin.current]}
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-            setApi={setApi}
-            className="w-4/5 mx-auto "
-          >
-            <CarouselContent>
-              {data?.imgs.map((url, index) => (
-                <CarouselItem key={index}>
-                  <div className="">
-                    <Image
-                      src={url.src}
-                      width={100}
-                      height={60}
-                      layout="responsive"
-                      alt="Product image"
-                    />
-                  </div>
-                </CarouselItem>
+          <div className="text mt-24 px-16">
+            <div className="text flex gap-1">
+              <span className="text-black font-semibold">70 review</span>|{" "}
+              {data?.rating}
+              <RatingComponent rating={data?.rating as number} />
+            </div>
+            <p className="text mt-1 border-b py-1 mb-5">Item reviews</p>
+            <div className="text my-10">
+              <div className="text flex items-center gap-2">
+                <div className="text-gray-500 rounded-full w-8 h-8 border flex items-center justify-center bg-gray-300">
+                  <FaUserAlt />
+                </div>
+                <div className="text">John Doe</div>
+              </div>
+              <div className="text my-2">
+                <RatingComponent rating={4.5} />
+              </div>
+              <div className="text mt-1">
+                Good item, super deal and smart, absolutely beautiful
+              </div>
+            </div>
+            <div className="text my-10">
+              <div className="text flex items-center gap-2">
+                <div className="text-gray-500 rounded-full w-8 h-8 border flex items-center justify-center bg-gray-300">
+                  <FaUserAlt />
+                </div>
+                <div className="text">Tsime Obuseng</div>
+              </div>
+              <div className="text my-2">
+                <RatingComponent rating={5} />
+              </div>
+              <div className="text mt-1">
+                Good deal and smart and , pleased with product
+              </div>
+            </div>
+            <div className="text my-10">
+              <div className="text flex items-center gap-2">
+                <div className="text-gray-500 rounded-full w-8 h-8 border flex items-center justify-center bg-gray-300">
+                  <FaUserAlt />
+                </div>
+                <div className="text">Tsime Obuseng</div>
+              </div>
+              <div className="text my-2">
+                <RatingComponent rating={5} />
+              </div>
+              <div className="text mt-1">
+                I like the item, it is in good condition, good quality.
+              </div>
+            </div>
+            <div className="text my-10">
+              <div className="text flex items-center gap-2">
+                <div className="text-gray-500 rounded-full w-8 h-8 border flex items-center justify-center bg-gray-300">
+                  <FaUserAlt />
+                </div>
+                <div className="text">Norbert Langefeld</div>
+              </div>
+              <div className="text my-2">
+                <RatingComponent rating={5} />
+              </div>
+              <div className="text mt-1">
+                Item was as described, everything is great.
+              </div>
+            </div>
+            <div className="text my-10">
+              <div className="text flex items-center gap-2">
+                <div className="text-gray-500 rounded-full w-8 h-8 border flex items-center justify-center bg-gray-300">
+                  <FaUserAlt />
+                </div>
+                <div className="text">ony***7756</div>
+              </div>
+              <div className="text my-2">
+                <RatingComponent rating={5} />
+              </div>
+              <div className="text mt-1">It is an amazing item</div>
+            </div>
+            <div className="text">
+              {data?.imgs?.map((url, index) => (
+                <div className={`my-5`} key={index}>
+                  <Image
+                    src={url.src}
+                    width={100}
+                    height={60}
+                    layout="responsive"
+                    alt="Product image"
+                  />
+                </div>
               ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+            </div>
+          </div>
         </div>
-        <div className="text-gray-500 pl-5 lg:pr-16 pt-5 md:mt-0 text-sm">
-          <div className="text w-full">
+        <div className="text-gray-500 pl-5 lg:pr-32 pt-5 md:mt-0 text-sm">
+          <div className="text w-full sticky top-20">
             <span className="text-sm font-light  break-words">
               {data?.description}
             </span>
@@ -215,7 +314,7 @@ const ProductDetailsPage = ({ params }) => {
               {data?.ukSize?.length > 0 || data?.stdSize?.length > 0 ? (
                 <>
                   <ScrollArea className="h-[100px] mt-2 md:w-[380px]">
-                    <Tabs defaultValue="uk" className="md:w-[400px]">
+                    <Tabs defaultValue={data?.ukSize?.length > 0 && data?.stdSize?.length > 0? "uk" : data?.ukSize?.length === 0 && data?.stdSize?.length > 0? "standard" : "uk"} className="md:w-[400px]">
                       <TabsList>
                         <TabsTrigger value="uk">Uk Size</TabsTrigger>
                         <TabsTrigger value="standard">
@@ -288,20 +387,112 @@ const ProductDetailsPage = ({ params }) => {
               </div>
             </div>
             <div className="text">
-              <button className="text rounded-full py-2 bg-amber-700 text-white relative overflow-hidden group w-full">
-                <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
-                <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
-                <span className="relative leading-3">
-                  Add to cart
+              {cartIds.includes(data?.id) ? (
+                <button
+                  disabled
+                  className="text rounded-full py-2 bg-gray-400 text-white relative overflow-hidden group w-full"
+                >
+                  Item is successfully added
                   <p className="text">{data?.discount} OFF</p>
-                </span>
-              </button>
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    addCartItem(data?.id);
+                      toast.success(
+                        "The item is successfully added, click the cart to view",
+                        {
+                          position: "top-right",
+                          autoClose: 3000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          draggable: true,
+                          progress: undefined,
+                          style: {
+                            backgroundColor: "white",
+                            color: "black",
+                          },
+                        }
+                      );
+                  }}
+                  className="text rounded-full py-2 bg-amber-700 text-white relative overflow-hidden group w-full"
+                >
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
+                  <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
+                  <span className="relative leading-3">
+                    Add to cart
+                    <p className="text">{data?.discount} OFF</p>
+                  </span>
+                </button>
+              )}
+            </div>
+            <div className="text-gray-400 font-light mt-5">
+              <div className="text">
+                <p className="text-[#23941A] my-1 flex  items-center gap-1">
+                  <GrDeliver className="" /> Free shipping on all orders
+                </p>
+                <p className="text my-1">
+                  Deliver: <span className="text-gray-700">Jan 25-30</span>
+                </p>
+                <p className="text my-1">
+                  Courer company:{" "}
+                  <span className="text-gray-700">
+                    ABC GOODS STORE, GIGAMIT GOODS, SKYBONNET, GRACIOUS,
+                    ACCCCELEROMAX,
+                  </span>
+                </p>
+                <p className="text-[#23941A] mt-2 flex  items-center gap-1">
+                  <SiSpringsecurity className="" />
+                  {` Shoplicity's commitments`}
+                </p>
+                <div className="text flex gap-2">
+                  <div className="text bg-[#F8F8F8] p-2">
+                    <p className="text-[#23941A] my-1 flex  items-center gap-1">
+                      {` Security & Privacy`}
+                    </p>
+                    <ul className="text-xs">
+                      <li className="text-gray-700 flex items-center gap-1 my-1">
+                        <IoMdCheckmark className="text-[#23941A]" /> Safe
+                        payments
+                      </li>
+                      <li className="text-gray-700 flex items-center gap-1 my-1">
+                        <IoMdCheckmark className="text-[#23941A]" /> Secure
+                        privacy
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="text bg-[#F8F8F8] p-2">
+                    <p className="text-[#23941A] my-1 flex  items-center gap-1">
+                      {` Delivery guarantee`}
+                    </p>{" "}
+                    <ul className="text-xs grid grid-cols-2">
+                      <li className="text-gray-700 flex items-center gap-1">
+                        <IoMdCheckmark className="text-[#23941A]" />{" "}
+                        <span className="text p-0 mx-0 text-md">₦</span>1,600
+                        credit for delay
+                      </li>
+                      <li className="text-gray-700 flex items-center gap-1 my-1">
+                        <IoMdCheckmark className="text-[#23941A]" />
+                        Return if item damaged
+                      </li>
+                      <li className="text-gray-700 flex items-center gap-1 my-1">
+                        <IoMdCheckmark className="text-[#23941A]" />
+                        30-day no update refund
+                      </li>
+                      <li className="text-gray-700 flex items-center gap-1 my-1">
+                        <IoMdCheckmark className="text-[#23941A]" />
+                        45-day no delivery refund
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="text w-full px-10 ">
-        <h1 className="text-xl w-full my-3 font-semibold">You may also like</h1>
+        <h1 className="text-xl w-full my-3 font-semibold">RELATED PRODUCTS</h1>
         <div className="text grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 pb-5 mx-auto">
           {itemsDummyData.length > 0 &&
             itemsDummyData.map((item, index) => (

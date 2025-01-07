@@ -31,7 +31,7 @@ const HeroSectionCarousel: React.FC<carouselArr> = ({data}) => {
             <Image
               src={url}
               width={100}
-              height={60}
+              height={20}
               layout="responsive"
               alt="Product image"
             />

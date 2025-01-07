@@ -29,6 +29,7 @@ interface ItemData {
 
   export interface ratingType {
     rating: number;
+    color: string;
   }
   export interface tabType {
     data: string[];

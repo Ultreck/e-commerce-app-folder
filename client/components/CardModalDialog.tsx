@@ -15,7 +15,6 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
 import { AiFillFire } from "react-icons/ai";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -23,12 +22,16 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay"
 import Link from "next/link";
 import useProductData from "@/hooks/useProductData";
-// import { LuLoader } from "react-icons/lu";
+import { userCartItemsStore } from "@/store/cartItems";
+import { toast } from "react-toastify";
 
 const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
+  const addCartItem = userCartItemsStore((state) => state.addCartItem);
+  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  // console.log(cartIds.includes(data.id));
+
   const {
     scrollAreaRef,
     selectedSize,
@@ -48,18 +51,18 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
           <DialogTitle></DialogTitle>
           <div className="text grid grid-cols-1 md:grid-cols-2 w-full">
             <div className="text">
-              <Carousel 
-              plugins={[plugin.current]}
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
-              setApi={setApi} 
-              className="w-4/5 mx-auto ">
+              <Carousel
+                plugins={[plugin.current]}
+                // onMouseEnter={plugin.current.stop}
+                // onMouseLeave={plugin.current.reset}
+                setApi={setApi}
+                className="w-4/5 mx-auto "
+              >
                 <CarouselContent>
                   {data.imgs.map((url, index) => (
                     <CarouselItem key={index}>
                       <div className="">
                         <Image
-                          //  loader={url.src}
                           src={url.src}
                           width={420}
                           height={400}
@@ -81,8 +84,9 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                     {data?.imgs?.map((url, index) => (
                       <div
                         className={`w-16 h-16 ${
-                          index === current &&
-                          "border-amber-700 border-2 rounded"
+                          index === current
+                            ? "border-amber-700 border-2 rounded brightness-150 drop-shadow-md"
+                            : "contrast-50  brightness-100"
                         }  p-1 overflow-hidden`}
                         key={index}
                       >
@@ -101,7 +105,9 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
             </div>
             <div className="text-gray-500 p-5 mt-5 md:mt-0 text-sm">
               <div className="text w-full">
-                <p className="text-sm tracking-wider break-words">{data.description}</p>
+                <p className="text-sm tracking-wider break-words">
+                  {data.description}
+                </p>
                 <p className="text-gray-400 my-1">{data.noSold}</p>
                 <div className="text flex items-center gap-5">
                   <span className="text">
@@ -184,7 +190,7 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                   {data.ukSize.length > 0 || data.stdSize.length > 0 ? (
                     <>
                       <ScrollArea className="h-[100px] mt-2 md:w-[380px]">
-                        <Tabs defaultValue="uk" className="md:w-[400px]">
+                        <Tabs defaultValue={data.ukSize.length > 0 && data.stdSize.length > 0? "uk" : data.ukSize.length === 0 && data.stdSize.length > 0? "standard" : "uk"} className="md:w-[400px]">
                           <TabsList>
                             <TabsTrigger value="uk">Uk Size</TabsTrigger>
                             <TabsTrigger value="standard">
@@ -257,20 +263,54 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                   </div>
                 </div>
                 <div className="text">
-                  <button className="text rounded-full py-2 bg-amber-700 text-white relative overflow-hidden group w-full">
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
-                    <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
-                    <span className="relative leading-3">
-                      Add to cart
+                  {cartIds.includes(data.id) ? (
+                    <button
+                      disabled
+                      className="text rounded-full py-2 bg-gray-400 text-white relative overflow-hidden group w-full"
+                    >
+                      Item is successfully added
                       <p className="text">{data.discount} OFF</p>
-                    </span>
-                  </button>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        addCartItem(data.id);
+                        toast.success(
+                          "The item is successfully added, click the cart to view",
+                          {
+                            position: "top-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            draggable: true,
+                            progress: undefined,
+                            style: {
+                              backgroundColor: "white",
+                              color: "black",
+                            },
+                          }
+                        );
+                      }}
+                      className="text rounded-full py-2 bg-amber-700 text-white relative overflow-hidden group w-full"
+                    >
+                      <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
+                      <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
+                      <span className="relative leading-3">
+                        Add to cart
+                        <p className="text">{data.discount} OFF</p>
+                      </span>
+                    </button>
+                  )}
                 </div>
-                <button className="text mt-3">
-                  <Link className="flex items-center tracking-[0.1em] text-[#23941A] font-semibold" href={`/product-details/${data.id}`}>
-                  See full details <IoChevronForward className="animate-pulse" />
-                  </Link>
-                </button>
+                <Link
+                  className="hover:tracking-[0.2em] tracking-[0.1em] text-[#23941A] font-semibold"
+                  href={`/product-details/${data.id}`}
+                >
+                  <button className="flex items-center  mt-3">
+                    See full details{" "}
+                    <IoChevronForward className="hover:animate-pulse transform duration-500 hover:translate-x-3" />
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

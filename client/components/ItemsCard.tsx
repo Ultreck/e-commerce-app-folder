@@ -17,6 +17,7 @@ import { IoEye } from "react-icons/io5";
 import CardModalDialog from "./CardModalDialog";
 import { CardDataType } from "@/types/typeFiles";
 import Link from "next/link";
+import { userWishListItemsStore } from "@/store/wishListItems";
 
 // type ItemData = {
 //   id: string;
@@ -45,6 +46,17 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
   const toggleWishlist = () => {
     setIsAddedToWishlist((prevState) => !prevState);
   };
+
+  const addWishListItem = userWishListItemsStore(
+    (state) => state.addWishListItem
+  );
+  const removeWishListItem = userWishListItemsStore(
+    (state) => state.removeWishListItem
+  );
+  const wishListIds = userWishListItemsStore(
+    (state) => state.wishListCardsDatas
+  );
+  console.log(wishListIds);
 
   return (
     <Card
@@ -109,11 +121,25 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
         <div className="text flex items-center">
           <RatingComponent rating={data.rating} />
           <div className="text flex gap-2">
-            <button onClick={toggleWishlist} className="focus:outline-none">
-              {isAddedToWishlist ? (
-                <AiFillHeart size={24} color="#b45309" />
+            <button className="focus:outline-none">
+              {wishListIds.includes(data?.id) ? (
+                <AiFillHeart
+                  onClick={() => {
+                    toggleWishlist();
+                    removeWishListItem(data?.id)
+                  }}
+                  size={24}
+                  color="#b45309"
+                />
               ) : (
-                <AiOutlineHeart size={24} color="gray" />
+                <AiOutlineHeart
+                  onClick={() => {
+                    toggleWishlist();
+                    addWishListItem(data?.id);
+                  }}
+                  size={24}
+                  color="gray"
+                />
               )}
             </button>
             <div className="text cursor-pointer">

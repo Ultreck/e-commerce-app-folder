@@ -1,4 +1,5 @@
 import { CarouselApi } from "@/components/ui/carousel";
+import { CardDataType } from "@/types/typeFiles";
 import Autoplay from "embla-carousel-autoplay";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -9,6 +10,7 @@ const useProductData = () => {
   const [current, setCurrent] = React.useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedSize, setSelectedSize] = useState<number>();
+  const [cartDatas, setCartDatas] = useState<CardDataType | []>([]);
   const scrollAreaRef = useRef(null);
   const plugin = React.useRef(
     Autoplay({ delay: 1500, stopOnInteraction: true })
@@ -61,10 +63,13 @@ const useProductData = () => {
       }
     }
   };
+  // console.log(cartDatas);
+  
 
   return {
     scrollAreaRef,
     selectedSize,
+    cartDatas, 
     quantity,
     current,
     plugin,
@@ -72,6 +77,7 @@ const useProductData = () => {
     setApi,
     setCurrent,
     setQuantity,
+    setCartDatas,
     setSelectedSize,
     scrollToActiveThumbnail,
   };
