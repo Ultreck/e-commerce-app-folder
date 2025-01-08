@@ -2,19 +2,36 @@
 import RatingComponent from "@/components/RatingComponent";
 import useProductData from "@/hooks/useProductData";
 import { userCartItemsStore } from "@/store/cartItems";
+import { CardDataType, ItemData } from "@/types/typeFiles";
 import { itemsDummyData } from "@/utils/helper";
-import { Image } from "@nextui-org/react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
 const ProductCart = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  const [cartItems, setCartItems] = useState<any>(itemsDummyData);
   // const removeCartItem = userCartItemsStore((state) => state.removeCartItem);
   const { quantity, setQuantity } = useProductData();
-  // console.log(cartIds);
-  console.log(itemsDummyData);
+  //   console.log(currentIndex);
+
+  const updateQuantity = (id: string, increament: boolean) => {
+    setCartItems(
+      cartItems.map((value: ItemData) => {
+        if (value.id === id) {
+          return {
+            ...value,
+            quantity: increament
+              ? value.quantity + 1
+              : Math.max(value.quantity - 1, 1),
+          };
+        }
+        return value;
+      })
+    );
+  };
 
   return (
     <div className="px-16 py-20">
@@ -36,11 +53,12 @@ const ProductCart = () => {
             <div className="text">Remove</div>
           </div>
           <div className="text">
-            {itemsDummyData
+            {cartItems
               .filter((item) => cartIds.includes(item.id))
-              .map((matched) => (
+              .map((matched, index) => (
                 <div
-                  className="grid grid-cols-8 border-b py-3 px-5"
+                  onMouseEnter={() => setCurrentIndex(index)}
+                  className="grid hover:bg-gray-50 grid-cols-8 border-b py-3 px-5"
                   key={matched.id}
                 >
                   <div className="text grid col-span-3">
@@ -77,13 +95,14 @@ const ProductCart = () => {
                     <div className="text flex items-center my-3 gap-2">
                       <div
                         onClick={() => {
+                          updateQuantity(matched.id, false);
                           if (quantity > 1) {
                             setQuantity((prev) => prev - 1);
                           } else {
                             return;
                           }
                         }}
-                        className="text text cursor-pointer border p-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                        className="text-sm cursor-pointer border p-1 rounded-full bg-gray-100 hover:bg-gray-200"
                       >
                         <FaMinus
                           className={`${
@@ -91,20 +110,19 @@ const ProductCart = () => {
                           }  `}
                         />
                       </div>
-                      <span className="text-center flex justify-center items-center w-10 h-8 py-2">
+                      <span className="text-center flex justify-center font-semibold items-center w-10 h-8 py-2">
                         {quantity}
                       </span>
                       <div
                         onClick={() => {
-                          itemsDummyData.find((item) => {
-                            return item.id === matched.id
-                              ? { ...item, quantity: item.quantity + 1 }
-                              : item;
-                          });
-                          setQuantity((prev) => prev + 1);
-                          console.log(itemsDummyData);
+                          updateQuantity(matched.id, true);
+                          if (index === currentIndex) {
+                            console.log(index, currentIndex);
+
+                            setQuantity((prev) => prev + 1);
+                          }
                         }}
-                        className="text cursor-pointer border p-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                        className="text-sm cursor-pointer font-normal border p-1 rounded-full bg-gray-100 hover:bg-gray-200"
                       >
                         <FaPlus />
                       </div>
@@ -112,8 +130,10 @@ const ProductCart = () => {
                   </div>
                   <div className="text flex items-center">
                     <span className="text p-0 mx-0 text-md">₦ </span>
-                    <span className="text p-0 mx-1 text-md"> 123,000</span>
-                    {/* <span className="text p-0 mx-1 text-md">   {(quantity * data?.cPrice).toLocaleString()}</span> */}
+                    <span className="text p-0 mx-1 text-md">
+                      {" "}
+                      {(quantity * matched?.cPrice).toLocaleString()}
+                    </span>
                   </div>
                   <div className="text pl-2 flex items-center">
                     <button className="text">

@@ -1,5 +1,5 @@
 type imgData = {src: string}
-interface ItemData {
+export interface ItemData {
     id: string;
     description: string;
     noSold: string;
@@ -15,6 +15,7 @@ interface ItemData {
     ukSize: string[];
     stdSize: string[];
     color: string[];
+    quantity: number;
   }
   
   export interface CardDataType {
