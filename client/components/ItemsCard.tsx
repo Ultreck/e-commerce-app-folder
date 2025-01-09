@@ -56,7 +56,6 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
   const wishListIds = userWishListItemsStore(
     (state) => state.wishListCardsDatas
   );
-  console.log(wishListIds);
 
   return (
     <Card

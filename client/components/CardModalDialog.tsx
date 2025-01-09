@@ -190,7 +190,17 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                   {data.ukSize.length > 0 || data.stdSize.length > 0 ? (
                     <>
                       <ScrollArea className="h-[100px] mt-2 md:w-[380px]">
-                        <Tabs defaultValue={data.ukSize.length > 0 && data.stdSize.length > 0? "uk" : data.ukSize.length === 0 && data.stdSize.length > 0? "standard" : "uk"} className="md:w-[400px]">
+                        <Tabs
+                          defaultValue={
+                            data.ukSize.length > 0 && data.stdSize.length > 0
+                              ? "uk"
+                              : data.ukSize.length === 0 &&
+                                data.stdSize.length > 0
+                              ? "standard"
+                              : "uk"
+                          }
+                          className="md:w-[400px]"
+                        >
                           <TabsList>
                             <TabsTrigger value="uk">Uk Size</TabsTrigger>
                             <TabsTrigger value="standard">
