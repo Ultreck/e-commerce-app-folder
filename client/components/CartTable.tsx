@@ -9,6 +9,7 @@ import useProductData from "@/hooks/useProductData";
 import { ItemData } from "@/types/typeFiles";
 import { itemsDummyData } from "@/utils/helper";
 import { userCartItemsStore } from "@/store/cartItems";
+import ItemsCard from "./ItemsCard";
 
 const CartTable = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -128,6 +129,17 @@ const CartTable = () => {
                     <RxCross2 className="" />
                   </button>
                 </div>
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="text w-full ">
+        <h1 className="text-xl w-full my-2 font-semibold">{"Explore Shoplicity's picks"}</h1>
+        <div className="text grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-5 mx-auto">
+          {itemsDummyData.length > 0 &&
+            itemsDummyData.map((item, index) => (
+              <div className="text hover:z-10" key={index}>
+                <ItemsCard data={item} />
               </div>
             ))}
         </div>

@@ -18,20 +18,20 @@ const AccountModalDialog = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { data: session } = useSession();
-
+  console.log(session);
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-      <div
-        onMouseEnter={(e) => {
-          e.preventDefault();
-          setIsOpen(true);
-        }}
-        onMouseLeave={(e) => {
-          e.preventDefault();
-          setIsOpen(false);
-        }}
-        className="transition-transform duration-700"
-      >
+        <div
+          onMouseEnter={(e) => {
+            e.preventDefault();
+            setIsOpen(true);
+          }}
+          onMouseLeave={(e) => {
+            e.preventDefault();
+            setIsOpen(false);
+          }}
+          className="transition-transform duration-700"
+        >
         <DropdownMenuTrigger className="outline-none">
           <div className="text cursor-pointer rounded-full flex items-center border">
             <div
@@ -138,8 +138,8 @@ const AccountModalDialog = () => {
 
           {/* <ModalDialogElement/> */}
         </DropdownMenuContent>
-      </div>
-    </DropdownMenu>
+    </div>
+      </DropdownMenu>
   );
 };
 

@@ -1,11 +1,19 @@
 import { userCartItemsStore } from "@/store/cartItems";
 import { CardDataType } from "@/types/typeFiles";
 import React from "react";
-import { FaCcDinersClub, FaCcJcb, FaGooglePay, FaLock, FaApplePay, FaCcDiscover } from "react-icons/fa";
-
+import {
+  FaCcDinersClub,
+  FaCcJcb,
+  FaGooglePay,
+  FaLock,
+  FaApplePay,
+  FaCcDiscover,
+} from "react-icons/fa";
+import { SiSpringsecurity, SiVisa, SiAmericanexpress } from "react-icons/si";
+import { RiMastercardFill } from "react-icons/ri";
 
 const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
-    const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   console.log(data);
 
   return (
@@ -40,20 +48,40 @@ const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
           </span>
         </button>
       </div>
-          <div className="text">
-          <FaLock />
-          {/* <SiSpringsecurity /> */}
-          {/* <SiVisa />x */}
-          {/* <RiMastercardFill /> */}
-          <FaGooglePay />
-          <FaApplePay />
-          <FaCcDiscover />
-          {/* <SiAmericanexpress /> */}
-          <FaCcJcb />
-          <FaCcDinersClub />
-
-             </div>
-      
+      <div className="text my-5">
+        <p className="flex text-sm">
+          <FaLock className="text-[#23941A] mt-1 mr-1" />
+          You will not be charged until you review this order on the next page
+        </p>
+        <p className="flex mt-2 ">
+          <SiSpringsecurity className="text-[#23941A] mt-1 mr-1" />
+          <span className="text font-semibold">Safe Payment Options</span>
+        </p>
+        <p className=" ">
+          <span className="text-[#23941A] text-sm">
+            Shoplicity is committed to protecting your payment information.
+          </span>
+          <br />
+          <span className="text text-sm">
+            We follow PCI DSS standards, use strong encryption, and perform
+            regular reviews of its system to protect your privacy.
+          </span>
+        </p>
+        <p className="text mt-3">
+          Payment methods
+        </p>
+        <p className="text flex items-center justify-between">
+          <span className="text-xl text-blue-600 border w-10 h-6 rounded flex items-center justify-center"> <SiVisa /></span>
+          <span className="text-xl text-orange-600 border w-10 h-6 rounded flex items-center justify-center"><RiMastercardFill /></span>
+          <span className="text-xl border w-10 h-6 rounded flex items-center justify-center"><FaGooglePay /></span>
+          <span className="text-xl border w-10 h-6 rounded flex items-center justify-center"><FaApplePay /></span>
+          <span className="text-xl text-orange-600 border w-10 h-6 rounded flex items-center justify-center"><FaCcDiscover /></span>
+          <span className="text-xl text-blue-600 border w-10 h-6 rounded flex items-center justify-center"><SiAmericanexpress /></span>
+          <span className="text-xl text-blue-600 border w-10 h-6 rounded flex items-center justify-center"><FaCcJcb /></span>
+          <span className="text-xl text-blue-600 border w-10 h-6 rounded flex items-center justify-center"><FaCcDinersClub /></span>
+        </p>
+       
+      </div>
     </div>
   );
 };
