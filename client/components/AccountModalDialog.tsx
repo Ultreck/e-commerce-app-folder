@@ -13,23 +13,32 @@ import { useSession } from "next-auth/react";
 import { Separator } from "./ui/separator";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
+import {motion} from "framer-motion";
 
 const AccountModalDialog = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, ] = useState<boolean>(false);
 
   const { data: session } = useSession();
-  console.log(session);
+  const fullName = session?.user?.name;
+const initials = fullName
+  ?.split(" ") 
+  .map(word => word[0])
+  .join(""); 
+  
   return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-        <div
-          onMouseEnter={(e) => {
-            e.preventDefault();
-            setIsOpen(true);
-          }}
-          onMouseLeave={(e) => {
-            e.preventDefault();
-            setIsOpen(false);
-          }}
+    <DropdownMenu 
+    // open={isOpen} 
+    // onOpenChange={setIsOpen}
+    >
+        <div  
+          // onMouseEnter={(e) => {
+          //   e.preventDefault();
+          //   setIsOpen(true);
+          // }}
+          // onMouseLeave={(e) => {
+          //   e.preventDefault();
+          //   setIsOpen(false);
+          // }}
           className="transition-transform duration-700"
         >
         <DropdownMenuTrigger className="outline-none">
@@ -46,11 +55,7 @@ const AccountModalDialog = () => {
                     src={session?.user?.image as string}
                     alt="@user"
                   />
-                  <AvatarFallback>{`${
-                    session?.user?.name?.split("")[0].charAt(0) as string
-                  }${
-                    session?.user?.name?.split("")[1].charAt(0) as string
-                  }`}</AvatarFallback>
+                  <AvatarFallback className="text-black">{initials}</AvatarFallback>
                 </Avatar>
                 {!session ? (
                   <Skeleton className="h-full bg-golden w-full" />
@@ -66,14 +71,18 @@ const AccountModalDialog = () => {
             </div>
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-[450px] h-[550px]">
-          <div className="text flex">
-            <div className="text w-1/2 border-r">
+        <DropdownMenuContent className="">
+          <div
+          className="text flex h-[550px]">
+            <motion.div
+            initial={{width: 0}} 
+            animate={{width: 250}} 
+            transition={{delay: 0.4, duration: 0.2}}
+            className="text w-1/2 ">
               <ScrollArea className="h-[550px] rounded-md p-2">
                 {categories.map((value) => (
                   <div
                     className="text"
-                    // onMouseEnter={}
                     key={value}
                   >
                     <DropdownMenuItem className="flex justify-between">
@@ -82,19 +91,15 @@ const AccountModalDialog = () => {
                   </div>
                 ))}
               </ScrollArea>
-            </div>
-            <div className="text w-1/2">
+            </motion.div>
+            <div className="text  border-l">
               <div className="relative font-bold flex px-1 py-4">
                 <Avatar>
                   <AvatarImage
                     src={session?.user?.image as string}
                     alt="@user"
                   />
-                  <AvatarFallback>{`${
-                    session?.user?.name?.split("")[0].charAt(0) as string
-                  }${
-                    session?.user?.name?.split("")[1].charAt(0) as string
-                  }`}</AvatarFallback>
+                  <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
                 <div className="text flex items-center py-1 px-2">
                   <span className="text-base pr-1">{session?.user?.name}</span>
@@ -105,7 +110,7 @@ const AccountModalDialog = () => {
                 (profile) =>
                   !profile.isLogOut && (
                     <Link
-                      href={"#"}
+                      href={profile?.link}
                       className="text px-2 cursor-pointer hover:bg-gray-100 flex gap-2 items-center"
                       key={profile.name}
                     >

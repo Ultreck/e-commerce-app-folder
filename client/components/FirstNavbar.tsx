@@ -42,6 +42,7 @@ const FirstNavbar = () => {
         <div className="text">
           <LocationField />
         </div>
+        <Link href={"/customer/wishlist"}>
         <button
           onMouseEnter={() => {
             setIsHovered(true);
@@ -49,13 +50,13 @@ const FirstNavbar = () => {
           }}
           onMouseLeave={() => setIsHovered(false)}
           className="dark:text-white text-gray-700 gap-2 relative flex items-center "
-        >
+          >
           <FaRegHeart className="text-3xl text-black dark:text-white" />
           <span
             className={`text-white w-6 h-6 rounded-full flex items-center justify-center bg-amber-700 ${
               isHovered && index === 1 && "bg-golden"
-            } p-1 absolute left-4 -top-4 text-xs`}
-          >
+              } p-1 absolute left-4 -top-4 text-xs`}
+              >
         {wishListIds.length > 0 && wishListIds.length < 100
           ? wishListIds.length
           : wishListIds.length > 100
@@ -64,6 +65,7 @@ const FirstNavbar = () => {
           </span>
           Wishlist
         </button>
+        </Link>
         <Link href={"/cart"}>
           <button
             onMouseEnter={() => {
@@ -78,7 +80,7 @@ const FirstNavbar = () => {
             <span
               className={`text-white w-6 h-6 rounded-full flex items-center justify-center ${
                 isHovered && index === 2 && "bg-golden"
-              } bg-amber-700 p-1 absolute left-3 -top-4 text-xs`}
+                } bg-amber-700 p-1 absolute left-3 -top-4 text-xs`}
             >
               {cartIds.length > 0 && cartIds.length < 100
                 ? cartIds.length

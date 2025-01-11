@@ -6,9 +6,8 @@ import FirstNavbar from "@/components/FirstNavbar";
 import SecondNavbar from "@/components/SecondNavbar";
 // import SliderComponent from "@/components/SliderComponent";
 import Footer from "@/components/Footer";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const workSans = localFont({
   src: [
@@ -61,7 +60,6 @@ const workSans = localFont({
   variable: "--font-work-sans",
 });
 
-
 export const metadata: Metadata = {
   title: "Shoplicity",
   description: "Click. Shop. Smile",
@@ -75,15 +73,13 @@ export default function RootLayout({
   return (
     <NextSessionWrapper>
       <html lang="en">
-        <body
-          className={workSans.variable}
-        >
-          <FirstNavbar/>
-          <SecondNavbar/>
+        <body className={workSans.variable}>
+          <FirstNavbar />
+          <SecondNavbar />
           <ToastContainer />
           {/* <SliderComponent/> */}
           {children}
-          <Footer/>
+          <Footer />
         </body>
       </html>
     </NextSessionWrapper>

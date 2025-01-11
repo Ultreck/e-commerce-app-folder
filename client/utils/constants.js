@@ -66,16 +66,16 @@ export const supportList = [
 ]
 
 export const profileItems = [
-  { name: "Your orders", link: "/orders", icon: <MdBorderOuter/>},
-  { name: "Your reviews", link: "/review", icon: <VscPreview />},
-  { name: "Your profile", link: "/profile", icon: <CiUser />},
-  { name: "Wishlist", link: "/wishlist", icon:  <CiHeart />},
-  { name: "Credit balance  ", link: "/balance", icon: <CiMoneyCheck1 />},
-  { name: "Addresses", link: "/address", icon:  <FaRegAddressCard />},
-  { name: "Account security", link: "/security", icon: <AiOutlineSafetyCertificate />},
-  { name: "Permission", link: "/permission", icon:  <GrShieldSecurity />},
-  { name: "Notification", link: "/notification", icon: <IoIosNotificationsOutline />},
-  { name: "Log out", link: "/log-out", icon: <RiLogoutCircleLine />, isLogOut: true},
+  { name: "Your orders", link: "/customer/orders", icon: <MdBorderOuter/>},
+  { name: "Your reviews", link: "/customer/review", icon: <VscPreview />},
+  { name: "Your profile", link: "/customer/profile", icon: <CiUser />},
+  { name: "Wishlist", link: "/customer/wishlist", icon:  <CiHeart />},
+  { name: "Credit balance  ", link: "/customer/balance", icon: <CiMoneyCheck1 />},
+  { name: "Addresses", link: "/customer/address", icon:  <FaRegAddressCard />},
+  { name: "Account security", link: "/customer/security", icon: <AiOutlineSafetyCertificate />},
+  { name: "Permission", link: "/customer/permission", icon:  <GrShieldSecurity />},
+  { name: "Notification", link: "/customer/notification", icon: <IoIosNotificationsOutline />},
+  { name: "Log out", link: "/", icon: <RiLogoutCircleLine />, isLogOut: true},
 ]
 
 export const countriesWithFlagURLs = [
