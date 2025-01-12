@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsInboxes } from "react-icons/bs";
 import {motion} from "framer-motion"
+import OrderCard from "./OrderCard";
+
+
 const AllOrdersComponent = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   return (
     <div className="w-full">
+      {isLoading && 
       <div className="flex justify-center items-center min-h-[60vh]">
         <motion.div 
         initial={{x: 1000}}
@@ -15,6 +20,12 @@ const AllOrdersComponent = () => {
           <p className="text mt-3">{"You don't have any orders"}</p>
         </motion.div>
       </div>
+      }
+      {!isLoading && 
+      <div className="text">
+        <OrderCard/>
+      </div>
+      }
     </div>
   );
 };
