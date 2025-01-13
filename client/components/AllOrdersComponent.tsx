@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { BsInboxes } from "react-icons/bs";
 import {motion} from "framer-motion"
-import OrderCard from "./OrderCard";
+import OrderTable from "./OrderTable";
 
 
 const AllOrdersComponent = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, ] = useState<boolean>(false);
   return (
     <div className="w-full">
       {isLoading && 
@@ -22,9 +22,12 @@ const AllOrdersComponent = () => {
       </div>
       }
       {!isLoading && 
-      <div className="text">
-        <OrderCard/>
-      </div>
+      <motion.div  initial={{ y: 700 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 1, type: "tween" }}
+      className="text">
+        <OrderTable length={8} wish={false} />
+      </motion.div>
       }
     </div>
   );

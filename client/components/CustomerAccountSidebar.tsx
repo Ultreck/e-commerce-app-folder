@@ -14,8 +14,6 @@ const CustomerAccountSidebar = () => {
     ?.split(" ")
     .map((word) => word[0])
     .join("");
-  console.log(pathName);
-
   return (
     <div className="text w-full sticky top-28">
       <div className="relative font-bold flex px-1 py-4">

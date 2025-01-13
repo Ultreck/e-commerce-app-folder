@@ -1,17 +1,17 @@
-import { itemsDummyData } from "@/utils/helper";
 import React from "react";
-import { ScrollArea } from "./ui/scroll-area";
+// import { ScrollArea } from "./ui/scroll-area";
+import OrderCard from "./OrderCard";
 
-const OrderTable = () => {
+const OrderTable = ({length, wish}: {length: number, wish: boolean}) => {
   return (
     <div>
-      <ScrollArea className="h-[60vh] w-full rounded-md border">
-        {itemsDummyData.map((value, index) => (
+      {/* <ScrollArea className="h-[70vh] w-full rounded-md"> */}
+        {Array.from({length: length}).map((_, index) => (
           <div className="text" key={index}>
-            <div className="text"></div>
+            <OrderCard wish={wish}/>
           </div>
         ))}
-      </ScrollArea>
+      {/* </ScrollArea> */}
     </div>
   );
 };

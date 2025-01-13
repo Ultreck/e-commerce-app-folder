@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderCard = () => {
+const OrderCard = ({wish}) => {
   return (
     <div className='px-5'>
         <div className="text border-2 gap-3 w-full my-5 rounded flex items-center px-5 py-3">
