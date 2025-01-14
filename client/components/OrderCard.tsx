@@ -1,10 +1,10 @@
 import React from 'react'
 
-const OrderCard = ({wish}) => {
+const OrderCard = () => {
   return (
     <div className='px-5'>
         <div className="text border-2 gap-3 w-full my-5 rounded flex items-center px-5 py-3">
-            <div className="text w-32 h-28 rounded-md bg-gray-500"></div>
+            <div className="text w-32 h-28 rounded-md bg-gray-200"></div>
             <div className="text w-full">
                 <div className="text w-full">
                     <div className="text flex justify-between items-center w-full">

@@ -7,7 +7,7 @@ import HomeProgressBar from "./HomeProgressBar";
 import { CardDataType } from "@/types/typeFiles";
 import HeroSectionCarousel from "./HeroSectionCarousel";
 import { heroCarousel } from "@/utils/constants";
-import FooterContactBanner from "./FooterContactBanner";
+// import FooterContactBanner from "./FooterContactBanner";
 
 const Dashboard: React.FC<CardDataType> = () => {
   return (
@@ -28,9 +28,9 @@ const Dashboard: React.FC<CardDataType> = () => {
             </div>
           ))}
       </div>
-      <div className="bg-amber-800 text-white p-6">
+      {/* <div className="bg-amber-800 text-white p-6">
         <FooterContactBanner />
-      </div>
+      </div> */}
       <div className="text"></div>
     </>
   );

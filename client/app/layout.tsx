@@ -8,6 +8,7 @@ import SecondNavbar from "@/components/SecondNavbar";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FooterContactBanner from "@/components/FooterContactBanner";
 
 const workSans = localFont({
   src: [
@@ -76,9 +77,12 @@ export default function RootLayout({
         <body className={workSans.variable}>
           <FirstNavbar />
           <SecondNavbar />
-          <ToastContainer />
+          <ToastContainer /> 
           {/* <SliderComponent/> */}
           {children}
+          <div className="bg-amber-800 text-white p-6">
+            <FooterContactBanner />
+          </div>
           <Footer />
         </body>
       </html>

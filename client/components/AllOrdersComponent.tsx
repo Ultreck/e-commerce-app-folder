@@ -22,9 +22,9 @@ const AllOrdersComponent = () => {
       </div>
       }
       {!isLoading && 
-      <motion.div  initial={{ y: 700 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 1, type: "tween" }}
+      <motion.div  initial={{ x: -50 }}
+      animate={{ x: 0 }}
+      transition={{ type: "tween" }}
       className="text">
         <OrderTable length={8} wish={false} />
       </motion.div>

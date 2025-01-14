@@ -140,8 +140,6 @@ const initials = fullName
               <span className="text-3xl text-golden">{}</span>
             </div>
           </div>
-
-          {/* <ModalDialogElement/> */}
         </DropdownMenuContent>
     </div>
       </DropdownMenu>

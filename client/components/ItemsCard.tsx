@@ -19,26 +19,6 @@ import { CardDataType } from "@/types/typeFiles";
 import Link from "next/link";
 import { userWishListItemsStore } from "@/store/wishListItems";
 
-// type ItemData = {
-//   id: string;
-//   description: string;
-//   noSold: string;
-//   cPrice: string;
-//   iPrice: string;
-//   discount: string;
-//   delay: number;
-//   status: string[];
-//   imgs: string[];
-//   compactibleModel: string[];
-//   review: string;
-//   rating: number;
-//   ukSize: string[];
-//   stdSize: string[];
-//   color: string;
-// };
-// type ItemsCardProps = {
-//   data: ItemData;
-// };
 
 const ItemsCard: React.FC<CardDataType> = ({ data }) => {
   const [isAddedToWishlist, setIsAddedToWishlist] = useState<boolean>(false);

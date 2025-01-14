@@ -30,7 +30,6 @@ const CartTable = () => {
          return value;
        })
      );
-     console.log(cartItems);
    };
  
   return (

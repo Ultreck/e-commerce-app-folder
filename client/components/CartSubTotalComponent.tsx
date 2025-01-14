@@ -26,7 +26,7 @@ const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
         </div>
         <div className="text flex items-center justify-between">
           <div className="text-black">Item(s) discount: </div>
-          <div className="text">{120000} </div>
+          {/* <div className="text">{120000} </div> */}
           <div className="text">{120000} </div>
         </div>
       </div>
