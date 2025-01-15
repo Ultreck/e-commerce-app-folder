@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import img from "../../../assets/icons/wallet.svg";
 const CustomerBalance = () => {
-  const [isAvailable, setIsAvailable] = useState<boolean>(false);
+  const [isAvailable, ] = useState<boolean>(false);
   return (
     <div>
       <div className="text p-10">

@@ -33,7 +33,7 @@ const ProcessingOrderComponent = () => {
           transition={{ duration: 0.25, type: "tween" }}
           className="text"
         >
-          <OrderTable length={20} wish={false} />
+          <OrderTable length={20} />
         </motion.div>
       )}
     </div>

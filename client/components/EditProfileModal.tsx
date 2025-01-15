@@ -62,7 +62,7 @@ const onSubmit = (data: formOutPutType) => {
     const formData = new FormData();
     formData.append("name", data.fullName);
     if(fileRef?.current?.files[0]){
-        formData.append("file", fileRef?.current?.files[0]);
+     formData.append("file", fileRef?.current?.files[0]);
     }
 
     formData.forEach((value, key) => {

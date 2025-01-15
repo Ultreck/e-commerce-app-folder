@@ -31,13 +31,13 @@ const CustomerAccountSidebar = () => {
           !profile.isLogOut && (
             <Link
               href={profile?.link}
-              className={`text px-2 ${profile.link === pathName
+              className={`text-sm text-lg px-2 ${profile.link === pathName
                   ? "bg-amber-100/50 border-l-4 border-amber-600 font-semibold text-md"
                   : ""
               } cursor-pointer hover:bg-amber-100/50 flex gap-2 items-center`}
               key={profile.name}
             >
-              <div className="text-2xl">{profile.icon}</div>
+              <div className="text-lg lg:text-2xl">{profile.icon}</div>
               <div className="flex cursor-pointer justify-between hover:bg-transparent py-3 transition-transform duration-500">
                 {profile.name}
               </div>

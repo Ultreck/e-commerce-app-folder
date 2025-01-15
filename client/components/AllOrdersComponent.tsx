@@ -26,7 +26,7 @@ const AllOrdersComponent = () => {
       animate={{ x: 0 }}
       transition={{ type: "tween" }}
       className="text">
-        <OrderTable length={8} wish={false} />
+        <OrderTable length={8} />
       </motion.div>
       }
     </div>

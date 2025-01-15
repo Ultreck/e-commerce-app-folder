@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useState } from "react";
 import SearchProduct from "./SearchProduct";
 import LocationField from "./LocationField";
@@ -8,7 +7,6 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import SignInButton from "./SignInButton";
 import Link from "next/link";
 import { userCartItemsStore } from "@/store/cartItems";
-import { itemsDummyData } from "@/utils/helper";
 import { userWishListItemsStore } from "@/store/wishListItems";
 
 const FirstNavbar = () => {
@@ -17,9 +15,6 @@ const FirstNavbar = () => {
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   const wishListIds = userWishListItemsStore((state) => state.wishListCardsDatas);  
 
-  // const filteredCartItems = itemsDummyData.filter((matchedItems) =>
-  //   cartIds.includes(matchedItems.id)
-  // );
 
   return (
     <div className={`bg-white border-b pr-16 z-20 py-1 flex justify-between`}>
@@ -49,13 +44,13 @@ const FirstNavbar = () => {
             setIndex(1);
           }}
           onMouseLeave={() => setIsHovered(false)}
-          className="dark:text-white text-gray-700 gap-2 relative flex items-center "
+          className="dark:text-white text-gray-700 gap-2 relative text-sm flex items-center "
           >
-          <FaRegHeart className="text-3xl text-black dark:text-white" />
+          <FaRegHeart size={20} className="text-black dark:text-white" />
           <span
-            className={`text-white w-6 h-6 rounded-full flex items-center justify-center bg-amber-700 ${
+            className={`text-white w-5 h-5 rounded-full flex items-center justify-center bg-amber-700 ${
               isHovered && index === 1 && "bg-golden"
-              } p-1 absolute left-4 -top-4 text-xs`}
+              } p-1 absolute left-2 -top-3 text-xs`}
               >
         {wishListIds.length > 0 && wishListIds.length < 100
           ? wishListIds.length
@@ -73,14 +68,14 @@ const FirstNavbar = () => {
               setIndex(2);
             }}
             onMouseLeave={() => setIsHovered(false)}
-            className="dark:text-white gap-2 relative flex items-center"
+            className="dark:text-white gap-2 relative text-sm flex items-center"
           >
-            <MdOutlineShoppingCart className="text-3xl text-black dark:text-white" />
+            <MdOutlineShoppingCart size={20} className="text-black dark:text-white" />
             Cart
             <span
-              className={`text-white w-6 h-6 rounded-full flex items-center justify-center ${
+              className={`text-white w-5 h-5 rounded-full flex items-center justify-center ${
                 isHovered && index === 2 && "bg-golden"
-                } bg-amber-700 p-1 absolute left-3 -top-4 text-xs`}
+                } bg-amber-700 p-1 absolute left-2 -top-3 text-xs`}
             >
               {cartIds.length > 0 && cartIds.length < 100
                 ? cartIds.length

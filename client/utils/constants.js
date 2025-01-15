@@ -310,7 +310,8 @@ if(text.length > maxLength){
 return text;
 }
 
-export const userProfile = {
+export const userProfile = [
+  {
   firstName: "John",
   lastName: "Doe",
   phoneNumber: "7064778921",
@@ -320,4 +321,39 @@ export const userProfile = {
   state: "Lagos",
   city: "Gbagada",
   postalAddress: "00229",
-}
+},
+{
+  firstName: "Grace",
+  lastName: "Williams",
+  phoneNumber: "506444321",
+  streetAddress: "223 Deji Olamiju Peace Estate ",
+  country: "Nigeria",
+  apartment: "Sholuyi Gbagada Lagos",
+  state: "Lagos",
+  city: "Gbagada",
+  postalAddress: "00229",
+  default: true,
+},
+{
+firstName: "Grace",
+lastName: "Williams",
+phoneNumber: "506444321",
+streetAddress: "223 Deji Olamiju Peace Estate ",
+country: "Nigeria",
+apartment: "Sholuyi Gbagada Lagos",
+state: "Lagos",
+city: "Gbagada",
+postalAddress: "00229",
+},
+{
+firstName: "John",
+lastName: "Doe",
+phoneNumber: "7064778921",
+streetAddress: "11 Deji Olamiju Peace Estate ",
+country: "Nigeria",
+apartment: "Sholuyi Gbagada Lagos",
+state: "Lagos",
+city: "Gbagada",
+postalAddress: "00229",
+},
+]

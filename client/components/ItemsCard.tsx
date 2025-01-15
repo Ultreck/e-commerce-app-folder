@@ -21,7 +21,7 @@ import { userWishListItemsStore } from "@/store/wishListItems";
 
 
 const ItemsCard: React.FC<CardDataType> = ({ data }) => {
-  const [isAddedToWishlist, setIsAddedToWishlist] = useState<boolean>(false);
+  const [, setIsAddedToWishlist] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const toggleWishlist = () => {
     setIsAddedToWishlist((prevState) => !prevState);
@@ -98,7 +98,7 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
           <VerticalTextSlider data={data.status} delayValue={data.delay} />
         </div>
         <div className="text flex items-center">
-          <RatingComponent rating={data.rating} />
+          <RatingComponent rating={data.rating} color="#000000" />
           <div className="text flex gap-2">
             <button className="focus:outline-none">
               {wishListIds.includes(data?.id) ? (

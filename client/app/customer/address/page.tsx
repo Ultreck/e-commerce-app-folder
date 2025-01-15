@@ -1,23 +1,19 @@
+'use client'
 import AddressCard from "@/components/AddressCard";
+import AddressForm from "@/components/AddressForm";
+import useSearchQuery from "@/hooks/useSearchQuery";
 import React from "react";
 
+
 const CustomerAddress = () => {
+  const {searchParams} =  useSearchQuery();
+  const queryString = searchParams?.get("type");
+  const queryData = JSON.parse(searchParams?.get("data"));
   return (
     <div>
-      <div className="text">
-        <div className="text border-b p-6 flex justify-between items-center">
-          <p className="text">Addresses(5)</p>
-          <p className="text">
-            <button className="text-white font-semibold bg-[#23941A] px-3 py-0.5 rounded">
-              Create address
-            </button>
-          </p>
-        </div>
-        <div className="text">
-          <AddressCard/>
-        </div>
-        <div className="text"></div>
-      </div>
+      {queryString === 'create' && <AddressForm data={queryData} type={queryString}/>}
+      {queryString !== 'create' && queryString !== "edit" && <AddressCard data={queryData} type={queryString}/>}
+      {queryString === 'edit' && <AddressForm data={queryData} type={queryString}/>}
     </div>
   );
 };

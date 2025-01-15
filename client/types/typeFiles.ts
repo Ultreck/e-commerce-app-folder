@@ -14,8 +14,8 @@ export interface ItemData {
     rating: number;
     ukSize: string[];
     stdSize: string[];
-    color: string[];
     quantity: number;
+    color: string[];
   }
   
   export interface CardDataType {
