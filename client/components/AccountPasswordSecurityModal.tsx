@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -22,133 +22,161 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { useSession } from "next-auth/react";
+import { Input } from "@/components/ui/input";
+import { GoEye } from "react-icons/go";
+import { GoEyeClosed } from "react-icons/go";
 
-interface securityType {
-  pin: string;
-}
-const FormSchema = z.object({
-  pin: z.string().min(6, {
-    message: "Your one-time password must be 6 characters.",
-  }),
-});
+const formSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, "Password must be at least 8 characters")
+      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+      .regex(/[0-9]/, "Password must contain at least one number")
+      .regex(
+        /[@$!%*?&]/,
+        "Password must contain at least one special character"
+      ),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters"),
+  })
+  .refine((value) => value.password === value.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
 const AccountPasswordSecurityModal = () => {
-  const [value, setValue] = useState<string>("");
-  const [counter, setCounter] = useState<number>(60);
-  const { data: session } = useSession();
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [password1, setPassword1] = useState<boolean>(false);
+  const [password2, setPassword2] = useState<boolean>(false);
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
-      pin: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 
-  console.log(value);
+  
 
-  const onSubmit = (data: securityType) => {
-    console.log(data);
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
+    console.log("Submitted:", data);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (counter > 1) {
-        setCounter((prev) => prev - 1);
-      }
-    }, 1000);
-  }, [counter]);
-
   return (
-    <Dialog>
-      <DialogTrigger>
-        <p className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
-          Edit
-        </p>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>
-            <div className="text-center">Enter the verification code</div>
-          </DialogTitle>
-          <DialogDescription>
-            <span className="text-black text-center">
-              {`To continue, complete this verification step. We've sent a verification code to the email`}
-              <span className="text-amber-700 mx-1">
-                {session?.user?.email}{" "}
-              </span>
-              Please enter it below.
-            </span>
-          </DialogDescription>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-6">
-              <FormField
-                control={form.control}
-                name="pin"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel></FormLabel>
-                    <FormControl>
-                      <InputOTP
-                        value={field.value}
-                        onChange={(value) => {
-                          setValue(value);
-                          field.onChange(value);
-                        }}
-                        maxLength={6}
-                      >
-                        <InputOTPGroup className="flex gap-x-4">
-                          <InputOTPSlot index={0} />
-                          <InputOTPSlot index={1} />
-                          <InputOTPSlot index={2} />
-                          <InputOTPSlot index={3} />
-                          <InputOTPSlot index={4} />
-                          <InputOTPSlot index={5} />
-                        </InputOTPGroup>
-                      </InputOTP>
-                    </FormControl>
-                    <FormDescription className=" flex justify-end">
-                      {counter > 1 && (
-                        <span
-                          className={`text-amber-700 text-lg font-mono font-semibold`}
-                        >
-                          {counter}
-                        </span>
-                      )}
-                      {counter === 1 && (
-                        <span className={`text-amber-700`}>Resend otp</span>
-                      )}
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              {/* <Button type="submit">Submit</Button> */}
-            </form>
-          </Form>
-        </DialogHeader>
-        <div className="text">
-          <p className="text-base font-semibold">
-            {"Didn't receive the email? "}
+    <>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger>
+          <p className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+            Add
           </p>
-          <ul className="text-sm text-gray-500">
-            {[
-              "1. Make sure your email address is correct.",
-              "2. Please check your spam folder.",
-              `3. If you still don't see the email 🤷‍♂️.`,
-            ].map((value, index) => (
-              <li className="text" key={index}>
-                {value}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              <div className="text-center">Add a password</div>
+            </DialogTitle>
+            <DialogDescription>
+              <span className="text-center flex">
+                Enter the password you would like to associate with your account
+                below.
+              </span>
+            </DialogDescription>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel></FormLabel>
+                      <FormControl>
+                        <div className="text grid h-12 grid-cols-12 border ">
+                          <Input
+                            type={password1 ? "text" : "password"}
+                            placeholder="Enter your password"
+                            {...field}
+                            className="border-0 h-full focus-visible:ring-0 shadow-none col-span-11"
+                          />
+                          <div
+                            onClick={() => setPassword1(!password1)}
+                            className="text col-span-1 flex justify-center items-center"
+                          >
+                            {password1 ? (
+                              <button className="text">
+                                {" "}
+                                <GoEye />{" "}
+                              </button>
+                            ) : (
+                              <button className="text">
+                                {" "}
+                                <GoEyeClosed />
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel></FormLabel>
+                      <FormControl>
+                        <div className="text grid h-12 grid-cols-12 border ">
+                          <Input
+                            type={password2 ? "text" : "password"}
+                            placeholder="Confirm your password"
+                            {...field}
+                            className="border-0 h-full focus-visible:ring-0 shadow-none col-span-11"
+                          />
+                          <div
+                            onClick={() => setPassword2(!password2)}
+                            className="text col-span-1 flex justify-center items-center"
+                          >
+                            {password2 ? (
+                              <button className="text">
+                                {" "}
+                                <GoEye />{" "}
+                              </button>
+                            ) : (
+                              <button className="text">
+                                {" "}
+                                <GoEyeClosed />
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full">
+                  Submit
+                </Button>
+              </form>
+            </Form>
+            <div className="text">
+              <p className="text-base font-semibold">Password quality:-</p>
+              <p className="text-sm  text-gray-500">
+                Don't use a password from another site, or something too obvious
+                like your pet's name.
+              </p>
+            </div>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

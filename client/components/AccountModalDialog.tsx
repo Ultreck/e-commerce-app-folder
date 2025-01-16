@@ -27,18 +27,8 @@ const initials = fullName
   
   return (
     <DropdownMenu 
-    // open={isOpen} 
-    // onOpenChange={setIsOpen}
     >
         <div  
-          // onMouseEnter={(e) => {
-          //   e.preventDefault();
-          //   setIsOpen(true);
-          // }}
-          // onMouseLeave={(e) => {
-          //   e.preventDefault();
-          //   setIsOpen(false);
-          // }}
           className="transition-transform duration-700"
         >
         <DropdownMenuTrigger className="outline-none">

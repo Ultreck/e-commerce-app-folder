@@ -33,7 +33,6 @@ const FooterContactBanner = () => {
       </div>
       <div className="text w-0 lg:w-2/5">
         <Image
-          //  loader={url.src}
           src={img}
           width={420}
           height={400}

@@ -32,7 +32,7 @@ const phoneNumberSecurity = z.object({
     .string()
     .min(3, { message: "Please enter a valid phone number" }),
 });
-const AccountSecurityModal = () => {
+const AccountPhoneNumberSecurityModal = () => {
   const form = useForm<z.infer<typeof phoneNumberSecurity>>({
     resolver: zodResolver(phoneNumberSecurity),
     defaultValues: {
@@ -56,7 +56,7 @@ const AccountSecurityModal = () => {
             <div className="text-center">Add a mobile phone number</div>
           </DialogTitle>
           <DialogDescription>
-            <span className="text-center">
+            <span className="text-center flex">
               Enter the mobile phone number you would like to associate with
               your account below.
             </span>
@@ -71,12 +71,12 @@ const AccountSecurityModal = () => {
                     <FormItem>
                       <FormLabel></FormLabel>
                       <FormControl>
-                        <div className="text border grid grid-cols-12">
+                        <div className="text border h-12 grid grid-cols-12">
                           <div className="text-center flex justify-center items-center border-r col-span-2">
                             +234
                           </div>
                           <Input
-                            className="border-0 shadow-none col-span-10 focus-visible:ring-0"
+                            className=" h-full border-0 shadow-none col-span-10 focus-visible:ring-0"
                             placeholder=""
                             {...field}
                           />
@@ -99,4 +99,4 @@ const AccountSecurityModal = () => {
   );
 };
 
-export default AccountSecurityModal;
+export default AccountPhoneNumberSecurityModal;
