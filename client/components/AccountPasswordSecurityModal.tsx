@@ -139,7 +139,7 @@ const AccountPasswordSecurityModal = () => {
             {[
               "1. Make sure your email address is correct.",
               "2. Please check your spam folder.",
-              `3. If you still don't see the email.`,
+              `3. If you still don't see the email 🤷‍♂️.`,
             ].map((value, index) => (
               <li className="text" key={index}>
                 {value}
