@@ -10,6 +10,9 @@ import { SiSpringsecurity } from "react-icons/si";
 import { z } from "zod";
 import Loading from "./loading";
 import AccountPasswordSecurityModal from "@/components/AccountPasswordSecurityModal";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook, FaGithub } from "react-icons/fa";
+import { TiVendorMicrosoft } from "react-icons/ti";
 
 const FormSchema = z.object({
   pin: z.string().min(6, {
@@ -58,7 +61,10 @@ const CustomerSecurity = () => {
         </div>
       </div>
       <div className="text flex justify-between items-center border-b py-8">
+        <div className="text">
+        <span className="text-lg font-semibold">Email</span>
         <div className="text">{session?.user?.email}</div>
+        </div>
         <div className="text">
           <AccountEmailOtpSecurityModal
             isOpen={isOpen}
@@ -73,9 +79,57 @@ const CustomerSecurity = () => {
         </div>
       </div>
       <div className="text flex justify-between items-center border-b py-8">
-        <div className="text">{session?.user?.email}</div>
+        <div className="text-lg font-semibold">
+          <div className="text">Password</div>
+          <span>........</span>
+        </div>
         <div className="text">
           <AccountPasswordSecurityModal/>
+        </div>
+      </div>
+      <div className="text-lg mt-16 font-semibold">Third-pathy accounts</div>
+      <div className="text flex justify-between items-center border-b py-8">
+        <div className="text-sm flex gap-1 items-center">
+          <div><FcGoogle size={28} /></div>
+          <div className="text">Google</div>
+        </div>
+        <div className="text">
+        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+          Link
+        </button>
+        </div>
+      </div>
+      <div className="text flex justify-between items-center border-b py-8">
+        <div className="text-sm flex gap-1 items-center">
+          <div><FaFacebook className="text-blue-500" size={28} /></div>
+          <div className="text">Facebook</div>
+        </div>
+        <div className="text">
+        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+          Link
+        </button>
+        </div>
+      </div>
+      <div className="text flex justify-between items-center border-b py-8">
+        <div className="text-sm flex gap-1 items-center">
+          <div><TiVendorMicrosoft className="text-green-500" size={28} /></div>
+          <div className="text">Microsoft</div>
+        </div>
+        <div className="text">
+        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+          Link
+        </button>
+        </div>
+      </div>
+      <div className="text flex justify-between items-center border-b py-8">
+        <div className="text-sm flex gap-1 items-center">
+          <div><FaGithub className="text-red-500" size={28} /></div>
+          <div className="text">Github</div>
+        </div>
+        <div className="text">
+        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+          Link
+        </button>
         </div>
       </div>
     </div>

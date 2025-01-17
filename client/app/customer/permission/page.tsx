@@ -1,9 +1,12 @@
+import AccountPermission from '@/components/AccountPermission'
 import React from 'react'
 
-const customerPermission = () => {
+const CustomerPermission = () => {
   return (
-    <div>customerPermission</div>
+    <div className='p-8'>
+      <AccountPermission/>
+    </div>
   )
 }
 
-export default customerPermission
+export default CustomerPermission

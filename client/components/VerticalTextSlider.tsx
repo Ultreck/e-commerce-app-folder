@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sliderType } from "@/types/typeFiles";
+import { cn } from "@/lib/utils";
 
-const VerticalTextSlider: React.FC<sliderType> = ({ data, delayValue }) => {
+const VerticalTextSlider: React.FC<sliderType> = ({ data, className, delayValue }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const VerticalTextSlider: React.FC<sliderType> = ({ data, delayValue }) => {
             duration: 0.5,
             delay: delayValue,
           }}
-          className="text-sm font-semibold text-amber-600"
+          className={cn("text-sm font-semibold text-amber-600", className)}
         >
           {data[currentIndex]}
         </motion.div>

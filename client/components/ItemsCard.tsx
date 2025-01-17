@@ -95,7 +95,7 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
           </div>
         </div>
         <div className="text">
-          <VerticalTextSlider data={data.status} delayValue={data.delay} />
+          <VerticalTextSlider className="text-amber-700" data={data.status} delayValue={data.delay} />
         </div>
         <div className="text flex items-center">
           <RatingComponent rating={data.rating} color="#000000" />

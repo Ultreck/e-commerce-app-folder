@@ -15,7 +15,6 @@ const FirstNavbar = () => {
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   const wishListIds = userWishListItemsStore((state) => state.wishListCardsDatas);  
 
-
   return (
     <div className={`bg-white border-b pr-16 z-20 py-1 flex justify-between`}>
       <div className="text flex items-center justify-center w-1/2 gap-10">

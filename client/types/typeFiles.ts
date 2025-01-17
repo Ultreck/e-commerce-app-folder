@@ -26,6 +26,7 @@ export interface ItemData {
   export interface sliderType {
     data: string[];
     delayValue: number;
+    className: string;
   }
 
   export interface ratingType {

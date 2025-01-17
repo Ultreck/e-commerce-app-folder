@@ -10,11 +10,18 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { ScrollArea } from "./ui/scroll-area";
 import { categories } from "@/utils/constants";
 import { IoChevronForward } from "react-icons/io5";
-// import ModalDialogElement from "./ModalDialogElement";
+import useSearchQuery from "@/hooks/useSearchQuery";
 
 const DropdownElement = () => {
+  const { 
+    createSearchQueryString,
+    pathName,
+    searchParams,
+    router,
+  } = useSearchQuery();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [category, setCategory] = useState<string>(categories[0]);
+  // const [category, setCategory] = useState<string>(searchParams?.get('category'));
+const category = searchParams?.get('category');
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -36,11 +43,14 @@ const DropdownElement = () => {
         <DropdownMenuContent className="w-[900px] h-96">
           <div className="text flex">
             <div className="text w-1/3">
-              <ScrollArea className="h-96 rounded-md p-2">
+              <ScrollArea className="h-96 rounded-md p-2 pb-8">
                 {categories.map((value) => (
                   <div
                     className="text"
-                    onMouseEnter={() => setCategory(value)}
+                    onMouseEnter={() => {
+                      // setCategory(value);
+                      router.push(pathName + '?' + createSearchQueryString('category', value))
+                    }}
                     key={value}
                   >
                     <DropdownMenuItem className="flex justify-between pr-3">
@@ -56,8 +66,6 @@ const DropdownElement = () => {
               </ScrollArea>
             </div>
           </div>
-
-          {/* <ModalDialogElement/> */}
         </DropdownMenuContent>
       </div>
     </DropdownMenu>

@@ -76,7 +76,7 @@ const AccountEmailSecurityModal: React.FC<emailType> = ({ open, setOpen }) => {
                         <FormControl>
                           <div className="text border  h-12 grid grid-cols-12">
                             <Input
-                              className="border-0 shadow-none col-span-10 focus-visible:ring-0"
+                              className="border-0 h-12 shadow-none col-span-10 focus-visible:ring-0"
                               placeholder=""
                               {...field}
                             />

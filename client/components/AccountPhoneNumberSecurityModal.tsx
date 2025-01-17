@@ -76,7 +76,7 @@ const AccountPhoneNumberSecurityModal = () => {
                             +234
                           </div>
                           <Input
-                            className=" h-full border-0 shadow-none col-span-10 focus-visible:ring-0"
+                            className=" h-12 border-0 shadow-none col-span-10 focus-visible:ring-0"
                             placeholder=""
                             {...field}
                           />

@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import NextSessionWrapper from "@/components/NextSessionWrapper";
 import FirstNavbar from "@/components/FirstNavbar";
 import SecondNavbar from "@/components/SecondNavbar";
-// import SliderComponent from "@/components/SliderComponent";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
