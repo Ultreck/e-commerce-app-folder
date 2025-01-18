@@ -4,7 +4,7 @@ import DropdownElement from "./DropdownElement";
 import SupportDropdown from "./SupportDropdown";
 import { IoLocationOutline } from "react-icons/io5";
 import { userLocationStore } from "@/store/userLocationState";
-import AccountModalDialog from "./AccountModalDialog";
+import AccountModalDialog from "./customerAccount/AccountModalDialog";
 const SecondNavbar = () => {
   const [isScrolled, setIsScrolled] = useState<number>(0);
   const { clientLocation } = userLocationStore();

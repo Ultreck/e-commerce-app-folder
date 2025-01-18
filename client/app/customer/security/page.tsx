@@ -1,7 +1,7 @@
 "use client";
-import AccountEmailOtpSecurityModal from "@/components/AccountEmailOtpSecurityModal";
-import AccountEmailSecurityModal from "@/components/AccountEmailSecurityModal";
-import AccountSecurityModal from "@/components/AccountPhoneNumberSecurityModal";
+import AccountEmailOtpSecurityModal from "@/components/customerAccount/AccountEmailOtpSecurityModal";
+import AccountEmailSecurityModal from "@/components/customerAccount/AccountEmailSecurityModal";
+import AccountSecurityModal from "@/components/customerAccount/AccountPhoneNumberSecurityModal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import React, { Suspense, useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { SiSpringsecurity } from "react-icons/si";
 import { z } from "zod";
 import Loading from "./loading";
-import AccountPasswordSecurityModal from "@/components/AccountPasswordSecurityModal";
+import AccountPasswordSecurityModal from "@/components/customerAccount/AccountPasswordSecurityModal";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { TiVendorMicrosoft } from "react-icons/ti";
@@ -37,7 +37,7 @@ const CustomerSecurity = () => {
       setOpen(true);
     }
   }, [form, setIsOpen, setOpen, value]);
-  
+
   return (
     <div className="p-8">
       <div className="flex py-2 border-b">
@@ -62,8 +62,8 @@ const CustomerSecurity = () => {
       </div>
       <div className="text flex justify-between items-center border-b py-8">
         <div className="text">
-        <span className="text-lg font-semibold">Email</span>
-        <div className="text">{session?.user?.email}</div>
+          <span className="text-lg font-semibold">Email</span>
+          <div className="text">{session?.user?.email}</div>
         </div>
         <div className="text">
           <AccountEmailOtpSecurityModal
@@ -72,9 +72,8 @@ const CustomerSecurity = () => {
             form={form}
             setValue={setValue}
           />
-          <Suspense fallback={<Loading/>}>
-          <AccountEmailSecurityModal open={open} setOpen={setOpen} />
-
+          <Suspense fallback={<Loading />}>
+            <AccountEmailSecurityModal open={open} setOpen={setOpen} />
           </Suspense>
         </div>
       </div>
@@ -84,52 +83,60 @@ const CustomerSecurity = () => {
           <span>........</span>
         </div>
         <div className="text">
-          <AccountPasswordSecurityModal/>
+          <AccountPasswordSecurityModal />
         </div>
       </div>
       <div className="text-lg mt-16 font-semibold">Third-pathy accounts</div>
       <div className="text flex justify-between items-center border-b py-8">
         <div className="text-sm flex gap-1 items-center">
-          <div><FcGoogle size={28} /></div>
+          <div>
+            <FcGoogle size={28} />
+          </div>
           <div className="text">Google</div>
         </div>
         <div className="text">
-        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
-          Link
-        </button>
+          <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+            Link
+          </button>
         </div>
       </div>
       <div className="text flex justify-between items-center border-b py-8">
         <div className="text-sm flex gap-1 items-center">
-          <div><FaFacebook className="text-blue-500" size={28} /></div>
+          <div>
+            <FaFacebook className="text-blue-500" size={28} />
+          </div>
           <div className="text">Facebook</div>
         </div>
         <div className="text">
-        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
-          Link
-        </button>
+          <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+            Link
+          </button>
         </div>
       </div>
       <div className="text flex justify-between items-center border-b py-8">
         <div className="text-sm flex gap-1 items-center">
-          <div><TiVendorMicrosoft className="text-green-500" size={28} /></div>
+          <div>
+            <TiVendorMicrosoft className="text-green-500" size={28} />
+          </div>
           <div className="text">Microsoft</div>
         </div>
         <div className="text">
-        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
-          Link
-        </button>
+          <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+            Link
+          </button>
         </div>
       </div>
       <div className="text flex justify-between items-center border-b py-8">
         <div className="text-sm flex gap-1 items-center">
-          <div><FaGithub className="text-red-500" size={28} /></div>
+          <div>
+            <FaGithub className="text-red-500" size={28} />
+          </div>
           <div className="text">Github</div>
         </div>
         <div className="text">
-        <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
-          Link
-        </button>
+          <button className="text px-5 py-1 bg-amber-600 text-white rounded-full hover:bg-amber-700">
+            Link
+          </button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import AccountPermission from '@/components/AccountPermission'
+import AccountPermission from '@/components/customerAccount/AccountPermission'
 import React from 'react'
 
 const CustomerPermission = () => {

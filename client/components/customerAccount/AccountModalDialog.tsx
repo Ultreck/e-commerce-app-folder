@@ -6,14 +6,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ScrollArea } from "./ui/scroll-area";
 import { categories, profileItems } from "@/utils/constants";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSession } from "next-auth/react";
-import { Separator } from "./ui/separator";
-import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import { Skeleton } from "../ui/skeleton";
+import { ScrollArea } from "../ui/scroll-area";
+import { Separator } from "../ui/separator";
 
 const AccountModalDialog = () => {
   const [isOpen, ] = useState<boolean>(false);

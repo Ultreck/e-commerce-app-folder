@@ -25,10 +25,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
-import { Progress } from "./ui/progress";
-import VerticalTextSlider from "./VerticalTextSlider";
+import { Progress } from "../ui/progress";
+import VerticalTextSlider from "../VerticalTextSlider";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-
 
 const formSchema = z
   .object({
@@ -231,7 +230,7 @@ const AccountPasswordSecurityModal = () => {
                   <li key={index}>
                     {index + 1 <= 1 && (
                       <VerticalTextSlider
-                        className={'text-black font-normal text-end'}
+                        className={"text-black font-normal text-end"}
                         data={[
                           "At least 8 characters",
                           "At least one uppercase letter",
@@ -247,7 +246,10 @@ const AccountPasswordSecurityModal = () => {
                 ))}
               </ul>
               <p className="text-sm  text-gray-400 flex ">
-                <IoIosInformationCircleOutline size={24} className="text-sky-400 mr-1" />
+                <IoIosInformationCircleOutline
+                  size={24}
+                  className="text-sky-400 mr-1"
+                />
                 Don't use a password from another site, or something too obvious
                 like your pet's name.
               </p>

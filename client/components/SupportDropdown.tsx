@@ -9,8 +9,11 @@ import {
 import { IoChevronDownOutline } from "react-icons/io5";
 import { BiSupport } from "react-icons/bi";
 import { supportList } from "@/utils/constants";
+import Link from "next/link";
+import useSearchQuery from "@/hooks/useSearchQuery";
 const SupportDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { createSearchQueryString} = useSearchQuery();
   return (
     <div>
       {" "}
@@ -33,8 +36,12 @@ const SupportDropdown = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent className="">
             {supportList.map((value) => 
-            <div key={value} className="text flex">
-              <DropdownMenuItem className=" w-full">{value}</DropdownMenuItem>
+            <div key={value.text} className="text flex">
+              <DropdownMenuItem className=" w-full">
+              <Link className="w-full" href={value.link + '?' + createSearchQueryString('support-type', value.text)}>
+              {value.text}
+              </Link>
+              </DropdownMenuItem>
             </div>
             )}
 

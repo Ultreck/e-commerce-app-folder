@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { LiaEditSolid } from "react-icons/lia";
 import { useEffect, useRef } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { FaCamera } from "react-icons/fa";
 import { forEach } from "lodash";
 
@@ -40,11 +40,11 @@ interface userType {
 }
 
 interface formOutPutType {
-fullName: string;
+  fullName: string;
 }
 
 const EditProfileModal = ({ user }: { user: userType }) => {
-const fileRef  = useRef<HTMLInputElement | null>(null);
+  const fileRef = useRef<HTMLInputElement | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,30 +55,29 @@ const fileRef  = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     form.setValue("fullName", user?.name);
-    
-}, [user?.name, form]);
+  }, [user?.name, form]);
 
-const onSubmit = (data: formOutPutType) => {
+  const onSubmit = (data: formOutPutType) => {
     const formData = new FormData();
     formData.append("name", data.fullName);
-    if(fileRef?.current?.files[0]){
-     formData.append("file", fileRef?.current?.files[0]);
+    if (fileRef?.current?.files[0]) {
+      formData.append("file", fileRef?.current?.files[0]);
     }
 
     formData.forEach((value, key) => {
-        console.log(`${key}:${value}`);     
-    })
-};
+      console.log(`${key}:${value}`);
+    });
+  };
 
-const initials = user?.name
-.split(" ")
-.map((name) => name[0])
-.join("");
+  const initials = user?.name
+    .split(" ")
+    .map((name) => name[0])
+    .join("");
 
-const handleProfilePicUpdate = () => {
+  const handleProfilePicUpdate = () => {
     fileRef?.current?.click();
-  }
-  
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -97,7 +96,10 @@ const handleProfilePicUpdate = () => {
               <AvatarImage src={user?.image as string} alt="@user" />
               <AvatarFallback>{initials}</AvatarFallback>
             </Avatar>
-            <button onClick={handleProfilePicUpdate} className="text absolute bottom-0 left-11 rounded-full flex justify-center items-center bg-gray-200 w-10 h-10 p-2">
+            <button
+              onClick={handleProfilePicUpdate}
+              className="text absolute bottom-0 left-11 rounded-full flex justify-center items-center bg-gray-200 w-10 h-10 p-2"
+            >
               <FaCamera />
             </button>
           </div>
@@ -110,7 +112,11 @@ const handleProfilePicUpdate = () => {
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input className="h-14 text-lg" placeholder="John Doe" {...field} />
+                      <Input
+                        className="h-14 text-lg"
+                        placeholder="John Doe"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

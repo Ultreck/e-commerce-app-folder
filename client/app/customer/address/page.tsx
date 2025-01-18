@@ -1,6 +1,6 @@
 'use client'
-import AddressCard from "@/components/AddressCard";
-import AddressForm from "@/components/AddressForm";
+import AddressCard from "@/components/customerAccount/AddressCard";
+import AddressForm from "@/components/customerAccount/AddressForm";
 import useSearchQuery from "@/hooks/useSearchQuery";
 import React from "react";
 

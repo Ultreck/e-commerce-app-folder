@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import CardModalDialog from "./CardModalDialog";
 
 const WishListCard = ({ data }: { data: ItemData }) => {
   console.log(data);
@@ -26,7 +27,9 @@ const WishListCard = ({ data }: { data: ItemData }) => {
         <div className="text">
           <div className="text">
             <div className="text flex justify-between items-center">
-              <div className="text mt-1 mb-5">{textTruncateFucntion(data?.description, 100) }</div>
+              <div className="text mt-1 mb-5">
+                {textTruncateFucntion(data?.description, 100)}
+              </div>
             </div>
             <div className="text">
               <div className="text">
@@ -52,15 +55,17 @@ const WishListCard = ({ data }: { data: ItemData }) => {
                   >
                     <RxCross2 className="" size={22} />
                   </button>
-                  <button
+                  <div
                     title="add to cart"
-                    className="text border rounded-full p-2 bg-gray-50 hover:bg-amber-700"
+                    className="text border w-10 h-10 rounded-full p-2 bg-gray-50 hover:bg-amber-700"
                   >
-                    <MdAddShoppingCart
-                      size={22}
-                      className="text-amber-500 hover:text-white"
-                    />
-                  </button>
+                    <CardModalDialog data={data}>
+                      <MdAddShoppingCart
+                        size={22}
+                        className="text-amber-500 hover:text-white"
+                      />
+                    </CardModalDialog>
+                  </div>
                 </div>
               </div>
             </div>
