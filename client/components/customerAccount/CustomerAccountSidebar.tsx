@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Separator } from "./ui/separator";
 import Link from "next/link";
 import { profileItems } from "@/utils/constants";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Separator } from "../ui/separator";
 const CustomerAccountSidebar = () => {
   const { data: session } = useSession();
   const pathName = usePathname();

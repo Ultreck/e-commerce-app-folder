@@ -16,12 +16,14 @@ import React from "react";
 const SupportHomePage = () => {
   const { searchParams } = useSearchQuery();
   const supportType = searchParams?.get("support-children-type");
-  console.log(supportType);
 
   return (
     <div>
       <div className="text">
         {JSON.parse(supportType as string) === "Buying on Shoplicity" && (
+          <BuyingOnShoplicity />
+        )}
+        {JSON.parse(supportType as string) === null && (
           <BuyingOnShoplicity />
         )}
         {JSON.parse(supportType as string) === "Checkout" && <Checkout />}

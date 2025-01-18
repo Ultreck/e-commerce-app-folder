@@ -1,4 +1,4 @@
-import CustomerAccountSidebar from "@/components/CustomerAccountSidebar";
+import CustomerAccountSidebar from "@/components/customerAccount/CustomerAccountSidebar";
 import React from "react";
 
 const customerAccount = ({

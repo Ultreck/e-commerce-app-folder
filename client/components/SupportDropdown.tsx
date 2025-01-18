@@ -13,7 +13,7 @@ import Link from "next/link";
 import useSearchQuery from "@/hooks/useSearchQuery";
 const SupportDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { createSearchQueryString} = useSearchQuery();
+  const { createSearchQueryString } = useSearchQuery();
   return (
     <div>
       {" "}
@@ -24,9 +24,9 @@ const SupportDropdown = () => {
           className=""
         >
           <DropdownMenuTrigger className="outline-none">
-            <div className="text border-0 flex items-center justify-between gap-2">
+            <div className="text-sm text-gray-500 border-0 flex items-center justify-between gap-2">
               <BiSupport />
-              Support 
+              Support
               <IoChevronDownOutline
                 className={`transition-transform duration-500 ${
                   isOpen && "-rotate-180"
@@ -35,16 +35,24 @@ const SupportDropdown = () => {
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="">
-            {supportList.map((value) => 
-            <div key={value.text} className="text flex">
-              <DropdownMenuItem className=" w-full">
-              <Link className="w-full" href={value.link + '?' + createSearchQueryString('support-type', value.text)}>
-              {value.text}
-              </Link>
-              </DropdownMenuItem>
-            </div>
-            )}
-
+            {supportList.map((value) => (
+              <div key={value.text} className="text-gray-500 flex">
+                <DropdownMenuItem className=" w-full">
+                  <Link
+                    className="w-full"
+                    href={
+                      value.link === "/customer-care/support"
+                        ? value.link +
+                          "?" +
+                          createSearchQueryString("support-type", value.text)
+                        : value.link
+                    }
+                  >
+                    {value.text}
+                  </Link>
+                </DropdownMenuItem>
+              </div>
+            ))}
           </DropdownMenuContent>
         </div>
       </DropdownMenu>

@@ -31,7 +31,7 @@ const category = searchParams?.get('category');
         className=""
       >
         <DropdownMenuTrigger className="outline-none">
-          <div className="text border-0 flex items-center justify-center">
+          <div className="text-sm text-gray-500 border-0 flex items-center justify-center">
             Categories{" "}
             <IoChevronDownOutline
               className={`transition-transform duration-500 ${
@@ -46,9 +46,8 @@ const category = searchParams?.get('category');
               <ScrollArea className="h-96 rounded-md p-2 pb-8">
                 {categories.map((value) => (
                   <div
-                    className="text"
+                    className="text-gray-500"
                     onMouseEnter={() => {
-                      // setCategory(value);
                       router.push(pathName + '?' + createSearchQueryString('category', value))
                     }}
                     key={value}
