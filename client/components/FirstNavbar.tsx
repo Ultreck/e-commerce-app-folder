@@ -107,9 +107,11 @@ const FirstNavbar = () => {
             </span>
           </button>
         </Link>
+        <Link href={`/login`}>
         <div className="text">
           <SignInButton text={"Sign In"} className={""} />
         </div>
+        </Link>
       </div>
     </div>
   );

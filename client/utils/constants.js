@@ -55,7 +55,7 @@ export const supportList = [
   { text: "Shopilicity Puchase Protection", link: "/customer-care/puchase" },
   { text: "Chat with Shopilicity", link: "/customer-care/chat" },
   { text: "Privacy Policy", link: "/customer-care/policy" },
-  { text: "Terms of use", link: "/customer-care/terms" },
+  { text: "Terms of use", link: "/customer-care/term" },
 ];
 
 export const profileItems = [
