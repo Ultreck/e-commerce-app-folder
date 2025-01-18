@@ -22,35 +22,31 @@ const FirstNavbar = () => {
   );
 
   return (
-    <div className={`bg-white sticky top-0 border-b px-16 z-20 py-1 flex justify-between`}>
+    <div
+      className={`bg-white sticky top-0 border-b px-16 z-20 py-1 flex justify-between`}
+    >
       <div className="text flex items-center justify-center w-1/2 gap-5">
         <div className="text">
           <Link href={"/"}>
-          <div className="text flex gap-1 font-mono">
-            <TbHexagonLetterSFilled size={48} className="text-amber-700"/>
-            <div className="text  ">
-              <p className="text-2xl font-bold">Shoplicity</p>
-              <p className="text-xs">Click.Shop.Smile</p>
+            <div className="text flex gap-1 font-mono">
+              <TbHexagonLetterSFilled size={48} className="text-amber-700" />
+              <div className="text  ">
+                <p className="text-2xl font-bold">Shoplicity</p>
+                <p className="text-xs">Click.Shop.Smile</p>
+              </div>
             </div>
-          </div>
-            {/* <img
-              src="/final-copy.png"
-              width={180}
-              height={180}
-              alt="Picture of the author"
-            /> */}
           </Link>
         </div>
         <div className="text">
-        <DropdownElement />
+          <DropdownElement />
         </div>
         <div className="text w-3/5">
           <SearchProduct />
         </div>
       </div>
       <div className="text flex justify-between gap-5 items-center">
-      <SupportDropdown />
-      <div className="text">
+        <SupportDropdown />
+        <div className="text">
           <AccountModalDialog />
         </div>
         <div className="text">
@@ -108,9 +104,9 @@ const FirstNavbar = () => {
           </button>
         </Link>
         <Link href={`/login`}>
-        <div className="text">
-          <SignInButton text={"Sign In"} className={""} />
-        </div>
+          <div className="text">
+            <SignInButton text={"Sign In"} className={""} />
+          </div>
         </Link>
       </div>
     </div>

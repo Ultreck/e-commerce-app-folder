@@ -20,7 +20,6 @@ const DropdownElement = () => {
     router,
   } = useSearchQuery();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const [category, setCategory] = useState<string>(searchParams?.get('category'));
 const category = searchParams?.get('category');
 
   return (

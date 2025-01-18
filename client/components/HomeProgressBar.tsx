@@ -19,7 +19,6 @@ const HomeProgressBar = () => {
           right: 0,
           height: 5,
           originX: 0,
-        //   borderRadius: 50,
           backgroundColor: "#92400e",
           zIndex: "inherit"
         }}

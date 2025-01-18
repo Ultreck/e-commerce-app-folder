@@ -2,7 +2,9 @@ import React from 'react'
 
 const PaymentMethodPage = () => {
   return (
-    <div>PaymentMethodPage</div>
+    <div>
+        <div className="text"></div>
+    </div>
   )
 }
 

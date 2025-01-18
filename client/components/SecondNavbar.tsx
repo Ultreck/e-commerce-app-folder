@@ -40,7 +40,6 @@ const SecondNavbar = () => {
         <div className="text">
           <AccountModalDialog />
         </div>
-        {/* <span className="text">N</span> */}
       </div>
     </div>
   );

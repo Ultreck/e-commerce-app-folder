@@ -13,10 +13,7 @@ const ProcessingOrderComponent = () => {
         <div className="w-full">
           <div className="flex justify-center items-center min-h-[60vh]">
             <div
-              // initial={{ x: 1000, opacity: 0 }}
-              // animate={{ x: 0, opacity: 1 }}
               className=""
-              // transition={{ type: "tween" }}
             >
               <FcProcess className="text-6xl text-gray-500 mx-auto" />
               <p className="text mt-3">

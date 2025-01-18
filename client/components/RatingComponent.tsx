@@ -2,7 +2,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { ratingType } from "@/types/typeFiles";
-// import StarIcon from '@mui/icons-material/Star';
 const RatingComponent: React.FC<ratingType> = ({ color, rating }) => {  
   return (
     <div className="w-3/4">

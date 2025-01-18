@@ -10,27 +10,24 @@ import { categories, profileItems } from "@/utils/constants";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { Skeleton } from "../ui/skeleton";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 
 const AccountModalDialog = () => {
-  const [isOpen, ] = useState<boolean>(false);
+  const [isOpen] = useState<boolean>(false);
 
   const { data: session } = useSession();
   const fullName = session?.user?.name;
-const initials = fullName
-  ?.split(" ") 
-  .map(word => word[0])
-  .join(""); 
-  
+  const initials = fullName
+    ?.split(" ")
+    .map((word) => word[0])
+    .join("");
+
   return (
-    <DropdownMenu 
-    >
-        <div  
-          className="transition-transform duration-700"
-        >
+    <DropdownMenu>
+      <div className="transition-transform duration-700">
         <DropdownMenuTrigger className="outline-none">
           <div className="text cursor-pointer rounded-full flex items-center border">
             <div
@@ -45,7 +42,9 @@ const initials = fullName
                     src={session?.user?.image as string}
                     alt="@user"
                   />
-                  <AvatarFallback className="text-black">{initials}</AvatarFallback>
+                  <AvatarFallback className="text-black">
+                    {initials}
+                  </AvatarFallback>
                 </Avatar>
                 {!session ? (
                   <Skeleton className="h-full bg-golden w-full" />
@@ -62,19 +61,16 @@ const initials = fullName
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="">
-          <div
-          className="text flex h-[550px]">
+          <div className="text flex h-[550px]">
             <motion.div
-            initial={{width: 0}} 
-            animate={{width: 250}} 
-            transition={{delay: 0.4, duration: 0.2}}
-            className="text w-1/2 ">
+              initial={{ width: 0 }}
+              animate={{ width: 250 }}
+              transition={{ delay: 0.4, duration: 0.2 }}
+              className="text w-1/2 "
+            >
               <ScrollArea className="h-[550px] rounded-md p-2">
                 {categories.map((value) => (
-                  <div
-                    className="text"
-                    key={value}
-                  >
+                  <div className="text" key={value}>
                     <DropdownMenuItem className="flex justify-between">
                       {value}
                     </DropdownMenuItem>
@@ -131,8 +127,8 @@ const initials = fullName
             </div>
           </div>
         </DropdownMenuContent>
-    </div>
-      </DropdownMenu>
+      </div>
+    </DropdownMenu>
   );
 };
 

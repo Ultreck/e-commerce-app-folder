@@ -127,7 +127,6 @@ const AccountPasswordSecurityModal = () => {
                             }}
                             type={password1 ? "text" : "password"}
                             placeholder="Enter your password"
-                            // {...field}
                             className="border-0 h-full focus-visible:ring-0 shadow-none col-span-11"
                           />
                           <div
@@ -241,7 +240,6 @@ const AccountPasswordSecurityModal = () => {
                         delayValue={0.5}
                       />
                     )}
-                    {/* {condition.message} */}
                   </li>
                 ))}
               </ul>

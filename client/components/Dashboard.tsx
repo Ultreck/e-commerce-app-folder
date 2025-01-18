@@ -11,7 +11,6 @@ import { heroCarousel } from "@/utils/constants";
 const Dashboard: React.FC<CardDataType> = () => {
   return (
     <>
-      {/* <VerticalTextSlider /> */}
       <div className="text z-20">
         <HomeProgressBar />
       </div>

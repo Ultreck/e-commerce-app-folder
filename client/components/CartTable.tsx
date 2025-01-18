@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import CartSubTotalComponent from "./CartSubTotalComponent";
 import { RxCross2 } from "react-icons/rx";
@@ -15,23 +14,23 @@ const CartTable = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const { quantity, setQuantity } = useProductData();
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
- const [cartItems, setCartItems] = useState<any>(itemsDummyData);
-   const updateQuantity = (id: string, increament: boolean) => {
-     setCartItems(
-       itemsDummyData.map((value: ItemData) => {
-         if (value.id === id) {
-           return {
-             ...value,
-             quantity: increament
-               ? value.quantity + 1
-               : Math.max(value.quantity - 1, 1),
-           };
-         }
-         return value;
-       })
-     );
-   };
- 
+  const [cartItems, setCartItems] = useState<any>(itemsDummyData);
+  const updateQuantity = (id: string, increament: boolean) => {
+    setCartItems(
+      itemsDummyData.map((value: ItemData) => {
+        if (value.id === id) {
+          return {
+            ...value,
+            quantity: increament
+              ? value.quantity + 1
+              : Math.max(value.quantity - 1, 1),
+          };
+        }
+        return value;
+      })
+    );
+  };
+
   return (
     <div className="text">
       <div className="text">
@@ -44,8 +43,8 @@ const CartTable = () => {
         </div>
         <div className="text">
           {cartItems
-            .filter((item) => cartIds.includes(item.id))
-            .map((matched, index) => (
+            .filter((item: any) => cartIds.includes(item.id))
+            .map((matched: any, index: any) => (
               <div
                 onMouseEnter={() => setCurrentIndex(index)}
                 className="grid hover:bg-gray-50 grid-cols-8 border-b py-3 px-5"
@@ -133,7 +132,9 @@ const CartTable = () => {
         </div>
       </div>
       <div className="text w-full ">
-        <h1 className="text-xl w-full my-2 font-semibold">{"Explore Shoplicity's picks"}</h1>
+        <h1 className="text-xl w-full my-2 font-semibold">
+          {"Explore Shoplicity's picks"}
+        </h1>
         <div className="text grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-5 mx-auto">
           {itemsDummyData.length > 0 &&
             itemsDummyData.map((item, index) => (
