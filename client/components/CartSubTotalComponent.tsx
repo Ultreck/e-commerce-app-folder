@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { SiSpringsecurity, SiVisa, SiAmericanexpress } from "react-icons/si";
 import { RiMastercardFill } from "react-icons/ri";
+import Link from "next/link";
 
 const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
@@ -39,6 +40,7 @@ const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
         </div>
       </div>
       <div className="text mt-8">
+        <Link href={`/product-order-checkout`}>
         <button className="text rounded-full py-2 bg-amber-700 text-white relative overflow-hidden group w-full">
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
           <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
@@ -47,6 +49,7 @@ const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
             <p className="text">{data.discount} 1 item almost sold out</p>
           </span>
         </button>
+        </Link>
       </div>
       <div className="text my-5">
         <p className="flex text-sm">
