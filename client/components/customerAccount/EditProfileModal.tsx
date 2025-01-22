@@ -24,7 +24,6 @@ import { LiaEditSolid } from "react-icons/lia";
 import { useEffect, useRef } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { FaCamera } from "react-icons/fa";
-import { forEach } from "lodash";
 
 const formSchema = z.object({
   fullName: z

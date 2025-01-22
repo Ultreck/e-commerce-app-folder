@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CartSubTotalComponent from "./CartSubTotalComponent";
 import { RxCross2 } from "react-icons/rx";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import RatingComponent from "./RatingComponent";
@@ -43,8 +42,8 @@ const CartTable = () => {
         </div>
         <div className="text">
           {cartItems
-            .filter((item: any) => cartIds.includes(item.id))
-            .map((matched: any, index: any) => (
+            .filter((item: ItemData) => cartIds.includes(item.id))
+            .map((matched: ItemData, index: number) => (
               <div
                 onMouseEnter={() => setCurrentIndex(index)}
                 className="grid hover:bg-gray-50 grid-cols-8 border-b py-3 px-5"

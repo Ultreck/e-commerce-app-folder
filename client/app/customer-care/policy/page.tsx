@@ -16,7 +16,7 @@ const PrivacyPolicyPage = () => {
           </p>
         </div>
         <p className="text-sm text-gray-500 leading-7 mt-5">
-          This Privacy Policy describes how, Whaleco Technology Limited, an
+         {` This Privacy Policy describes how, Whaleco Technology Limited, an
           Irish company (“Shoplicity”, "we", "us" or "our") handles personal
           information that we collect through our digital properties that link
           to this Privacy Policy, including our website (www.Shoplicity.com), Shoplicity's
@@ -25,7 +25,7 @@ const PrivacyPolicyPage = () => {
           privacy. We strive to be transparent about our privacy practices,
           including how we treat your personal information. This Privacy Policy
           explains how we collect, use, share, and otherwise process the
-          personal information of users in connection with our Service.
+          personal information of users in connection with our Service.`}
         </p>
         <p className="text font-semibold mt-10">
           What Information Do We Collect
@@ -240,7 +240,7 @@ const PrivacyPolicyPage = () => {
           Cookies and similar technologies
         </p>
         <p className="text-sm mt-1 text-gray-500">
-          We use cookies and similar technologies to measure and analyze how you
+          {`We use cookies and similar technologies to measure and analyze how you
           use the Service, including the pages you view and how you interact
           with the content. Cookies and similar technologies are also used to
           enhance your experience with the Service, improve the Service, display
@@ -252,7 +252,7 @@ const PrivacyPolicyPage = () => {
           a description of the page on which the pixel tag was placed, and
           similar information from your computer or device. Some of these tools
           may enable us or third parties to collect information about how you
-          act with our and other websites over time.
+          act with our and other websites over time.`}
         </p>
         <p className="text-sm font-semibold mt-10">
           How and Why We Use Your Information
@@ -269,7 +269,7 @@ const PrivacyPolicyPage = () => {
             <span className="text-sm text-slate-600 font-semibold mr-1">
             Create and maintain your account.{" "}
             </span>
-            We use your personal information to create and maintain your user profile on the Service, enable the Service's account security features (e.g., sending security codes via email or SMS).
+            {`We use your personal information to create and maintain your user profile on the Service, enable the Service's account security features (e.g., sending security codes via email or SMS).`}
           </li>
           <li className="text-gray-500 list-disc list-inside my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">
@@ -323,7 +323,7 @@ const PrivacyPolicyPage = () => {
             <span className="text-sm text-slate-600 font-semibold mr-1">
             Compliance, legal obligations and protection.{" "}
             </span>
-            We may use your personal information for compliance purposes and to comply with applicable laws, lawful requests, and legal processes (e.g., responding to subpoenas or requests from government authorities); to protect our, your, and other users' rights, privacy, safety, or property (including introducing and defending legal claims); to audit internal processes to ensure compliance with applicable law and contractual requirements and our internal policies; to enforce the terms and conditions that govern the Service; to prevent, identify, investigate, and deter fraudulent, harmful, unauthorized, unethical, or illegal activities, including cyberattacks and identity theft.
+            {`We may use your personal information for compliance purposes and to comply with applicable laws, lawful requests, and legal processes (e.g., responding to subpoenas or requests from government authorities); to protect our, your, and other users' rights, privacy, safety, or property (including introducing and defending legal claims); to audit internal processes to ensure compliance with applicable law and contractual requirements and our internal policies; to enforce the terms and conditions that govern the Service; to prevent, identify, investigate, and deter fraudulent, harmful, unauthorized, unethical, or illegal activities, including cyberattacks and identity theft.`}
           </li>
           <li className="text-gray-500 list-disc list-inside my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">

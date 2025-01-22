@@ -13,9 +13,8 @@ import { SiSpringsecurity, SiVisa, SiAmericanexpress } from "react-icons/si";
 import { RiMastercardFill } from "react-icons/ri";
 import Link from "next/link";
 
-const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
+const CartSubTotalComponent = () => {
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
-  console.log(data);
 
   return (
     <div className="sticky text-gray-600 top-20 px-5">
@@ -27,7 +26,6 @@ const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
         </div>
         <div className="text flex items-center justify-between">
           <div className="text-black">Item(s) discount: </div>
-          {/* <div className="text">{120000} </div> */}
           <div className="text">{120000} </div>
         </div>
       </div>
@@ -46,7 +44,8 @@ const CartSubTotalComponent: React.FC<CardDataType> = ({ data }) => {
           <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
           <span className="relative leading-3">
             Checkout ({cartIds.length})
-            <p className="text">{data.discount} 1 item almost sold out</p>
+            <p className="text">
+               1 item almost sold out</p>
           </span>
         </button>
         </Link>

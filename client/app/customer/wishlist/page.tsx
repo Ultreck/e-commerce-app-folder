@@ -4,10 +4,8 @@ import WishListCard from '@/components/WishListCard'
 import { userWishListItemsStore } from '@/store/wishListItems'
 import { itemsDummyData } from '@/utils/helper'
 import React, { useEffect, useState } from 'react'
-import { AiOutlineHeart } from "react-icons/ai";
 
 const CustomerWishlist = () => {
-  const [icon, setIcon] = useState(<AiOutlineHeart/>)
   const wishListId = userWishListItemsStore((state) => state.wishListCardsDatas);
   useEffect(() => {
   console.log(wishListId);

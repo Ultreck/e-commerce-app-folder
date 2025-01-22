@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogContent,
@@ -30,7 +30,6 @@ import { toast } from "react-toastify";
 const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
-  // console.log(cartIds.includes(data.id));
 
   const {
     scrollAreaRef,

@@ -2,7 +2,6 @@
 import React from "react";
 import Link from "next/link";
 import { supportItems } from "@/utils/constants";
-import { useSession } from "next-auth/react";
 import useSearchQuery from "@/hooks/useSearchQuery";
 
 const SupportSidebar = () => {

@@ -16,7 +16,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -55,7 +54,7 @@ const AccountPasswordSecurityModal = () => {
   const [password1, setPassword1] = useState<boolean>(false);
   const [password2, setPassword2] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
-  const [password, setPassword] = useState<string>("");
+  const [, setPassword] = useState<string>("");
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,7 +75,7 @@ const AccountPasswordSecurityModal = () => {
     { test: /[!@#$%^&*]/, message: "One special character (!@#$%^&*)" },
   ];
 
-  const validatePassword = (password: any) => {
+  const validatePassword = (password: string) => {
     setPassword(password);
     const passedConditions = conditions.filter((condition) =>
       condition.test.test(password)
@@ -248,8 +247,8 @@ const AccountPasswordSecurityModal = () => {
                   size={24}
                   className="text-sky-400 mr-1"
                 />
-                Don't use a password from another site, or something too obvious
-                like your pet's name.
+                {`Don't use a password from another site, or something too obvious
+                like your pet's name.`}
               </p>
             </div>
           </DialogHeader>

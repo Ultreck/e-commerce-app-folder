@@ -24,8 +24,9 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useSession } from "next-auth/react";
-import { UseFormReturn } from "react-hook-form";
+import { useForm, UseFormReturn } from "react-hook-form";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface securityType {
   pin: string;
@@ -52,9 +53,15 @@ const AccountEmailOtpSecurityModal: React.FC<AccoutType> = ({
 }) => {
   const [counter, setCounter] = useState<number>(60);
   const { data: session } = useSession();
-
+const formTest = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      pin: "",
+    },
+})
   const onSubmit = (data: securityType) => {
     console.log(data);
+    console.log(formTest.getValues());
   };
 
   useEffect(() => {

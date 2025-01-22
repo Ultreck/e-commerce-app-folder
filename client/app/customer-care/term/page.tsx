@@ -9,7 +9,7 @@ const TermOfUsePage = () => {
           <span className="text-gray-600">Last updated: January 18, 2025</span>
         </div>
         <p className="text-sm text-gray-500 leading-7 mt-5">
-          Thank you for using Shoplicity! These Terms of Use ("Terms") contain
+        {` Thank you for using Shoplicity! These Terms of Use ("Terms") contain
           the rules and restrictions that govern your use of our applications,
           products, services and websites ("Services"). These Terms form a
           binding agreement between you and us. By completing the registration
@@ -22,7 +22,7 @@ const TermOfUsePage = () => {
           authorized representative of the entity with the authority to bind the
           entity to these Terms, and (c) you agree to these Terms on the
           entity’s behalf. You should not access or use the Services unless you
-          agree to be bound by all of these Terms.
+          agree to be bound by all of these Terms.`}
         </p>
         <p className="text font-semibold mt-10">
           <span className="text font-semibold mr-1">1. </span>
@@ -33,7 +33,7 @@ const TermOfUsePage = () => {
             <span className="text-sm text-slate-600 font-semibold mr-1">
               1.1{" "}
             </span>
-            To use the Services, you represent that you are at least eighteen
+            {`To use the Services, you represent that you are at least eighteen
             (18) years old and of legal age to form a binding contract. Children
             under 18 years are not permitted to use Shoplicity or the Services.
             Products for children’s use may be sold on Shoplicity. However,
@@ -42,25 +42,25 @@ const TermOfUsePage = () => {
             only. By ordering such products, you certify that you are old enough
             to view, use, own, or receive them. We are not responsible for
             third-party content that you may find offensive, indecent, or
-            objectionable.
+            objectionable.`}
           </li>
           <li className="text-gray-500 my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">
               1.2{" "}
             </span>
-            You may not use the Services if: (a) you cannot enter into a binding
+            {`You may not use the Services if: (a) you cannot enter into a binding
             contract with us; (b) you are located in a country embargoed by your
             country of residence or other relevant country; (c) you are on any
             agency list of prohibited persons or entities, such as the U.S.
             Treasury Department's list of Specially Designated Nationals; or (d)
             you are banned from using the Services by us, in our sole
-            discretion.
+            discretion.`}
           </li>
           <li className="text-gray-500 my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">
               1.3{" "}
             </span>
-            To access or use some of our Services, you may be required to create
+            {`To access or use some of our Services, you may be required to create
             an account with us. When creating your account on Shoplicity
             (“Account”), you agree to provide true, accurate, complete, and
             updated information about yourself, including contact details. You
@@ -77,7 +77,7 @@ const TermOfUsePage = () => {
             Services. You may not share your Account or password with anyone,
             and you agree to notify us immediately of any unauthorized use of
             your password or any other breach of security and to exit from your
-            Account at the end of each session.
+            Account at the end of each session.`}
           </li>
           <li className="text-gray-500 my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">
@@ -154,11 +154,11 @@ const TermOfUsePage = () => {
             <span className="text-sm text-slate-600 font-semibold mr-1">
               2.4{" "}
             </span>
-            Any sweepstakes, contests, raffles, surveys, games, or similar
+            {`Any sweepstakes, contests, raffles, surveys, games, or similar
             promotions (collectively, "Promotions") made available through the
             Services may be governed by separate rules. If the rules for a
             Promotion conflict with these Terms, the Promotion rules will
-            govern.
+            govern.`}
           </li>
           <li className="text-gray-500 my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">
@@ -204,30 +204,30 @@ const TermOfUsePage = () => {
                 information;
               </li>
               <li className="text-gray-500 my-3">
-                (9) use a third party's credentials, conceal your true IP
+                {`(9) use a third party's credentials, conceal your true IP
                 address, or otherwise impersonate or misrepresent your identity
-                or your affiliation with any person or entity;
+                or your affiliation with any person or entity;`}
               </li>
               <li className="text-gray-500 my-3">
                 (10) violate or interfere with the proper functioning or
                 security of any computer network;
               </li>
               <li className="text-gray-500 my-3">
-                (11) run any form of auto-responder or "spam" on the Services,
+               {` (11) run any form of auto-responder or "spam" on the Services,
                 any process that runs or is activated while you are not logged
                 into the Services, or any process that otherwise interferes with
                 the proper functioning of the Services (including by placing an
                 unreasonable load on the Services' infrastructure through
                 overloading, “flooding,” “mail bombing” or crashing the
-                Services);
+                Services);`}
               </li>
               <li className="text-gray-500 my-3">
-                (12) potentially harm the Services, including but not limited to
+                {`(12) potentially harm the Services, including but not limited to
                 the violation of any security features of the Services, use of
                 manual or automated software or other means to access, "crawl,"
                 "scrape," or "spider" any page, data, or portion of or relating
                 to the Services or the introduction of viruses, worms or similar
-                harmful code into the Services;
+                harmful code into the Services;`}
               </li>
               <li className="text-gray-500 my-3">
                 (13) copy or store any significant portion of the content on the
@@ -281,7 +281,7 @@ const TermOfUsePage = () => {
             <span className="text-sm text-slate-600 font-semibold mr-1">
               3.1{" "}
             </span>
-            You acknowledge and agree that all materials displayed, performed,
+            {`You acknowledge and agree that all materials displayed, performed,
             or available on or through the Services, including, but not limited
             to, text, graphics, data, articles, photos, images, illustrations
             and User Submissions (collectively, "Content") are protected by
@@ -291,17 +291,17 @@ const TermOfUsePage = () => {
             not to copy, reproduce, modify, translate, publish, broadcast,
             transmit, distribute, perform, upload, display, license, sell, or
             otherwise use for any purpose any Content not owned by you without
-            the prior consent of the owner of that Content.
+            the prior consent of the owner of that Content.`}
           </li>
           <li className="text-gray-500 my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">
               3.2{" "}
             </span>
-            We respect others' intellectual property rights, and we reserve the
+           {` We respect others' intellectual property rights, and we reserve the
             right to delete or disable Content alleged to be infringing upon
             another person’s intellectual property rights and to terminate the
             accounts of the alleged infringers. See our Intellectual Property
-            Policy to learn how to report potentially infringing content.
+            Policy to learn how to report potentially infringing content.`}
           </li>
           <li className="text-gray-500 my-3">
             <span className="text-sm text-slate-600 font-semibold mr-1">

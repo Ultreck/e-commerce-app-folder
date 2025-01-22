@@ -1,6 +1,4 @@
 import React from 'react'
-import { RiShip2Line } from "react-icons/ri";
-import {motion}  from "framer-motion"
 import EmptyPageComponent from './EmptyPageComponent';
 const ShippedOrderComponent = () => {
   return (

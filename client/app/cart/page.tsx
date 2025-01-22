@@ -6,7 +6,6 @@ import React from "react";
 
 const ProductCart = () => {
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
-let cartItems: any = [];
   return (
     <div className="px-16 py-10">
       <div className="text my-5">
@@ -22,7 +21,7 @@ let cartItems: any = [];
         <CartTable />   
         </div>
         <div className="text w-1/3 sticky top-20">
-        <CartSubTotalComponent data={cartItems} />
+        <CartSubTotalComponent />
       </div>
       </div>
     </div>

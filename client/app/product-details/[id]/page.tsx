@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { IoChevronForward } from "react-icons/io5";
 import {
   Carousel,
   CarouselContent,
@@ -14,7 +13,6 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-// import Autoplay from "embla-carousel-autoplay"
 import { itemsDummyData } from "@/utils/helper";
 import useProductData from "@/hooks/useProductData";
 import RatingComponent from "@/components/RatingComponent";

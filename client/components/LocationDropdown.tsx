@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { countriesWithFlagURLs, supportList } from "@/utils/constants";
+import { countriesWithFlagURLs } from "@/utils/constants";
 import { userLocationStore } from "@/store/userLocationState";
 import { locationType } from "@/types/locationType";
 import { TbCurrencyNaira } from "react-icons/tb";
@@ -17,10 +17,8 @@ import { Separator } from "./ui/separator";
 const LocationDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [userLocation, setUserLocation] = useState<locationType | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setClientLocation } = userLocationStore();
   useEffect(() => {
-    setIsLoading(true);
     fetch("https://get.geojs.io/v1/ip/geo.json")
       .then((response) => response.json())
       .then((data) => {
@@ -32,7 +30,6 @@ const LocationDropdown = () => {
           flag: found?.flag,
         };
         setUserLocation(allData);
-        setIsLoading(false);
         setClientLocation(allData);
       });
   }, [setClientLocation]);

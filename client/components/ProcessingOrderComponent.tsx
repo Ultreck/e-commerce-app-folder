@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 // import { BsInboxes } from 'react-icons/bs';
 import { motion } from "framer-motion";
-import { FcProcess } from "react-icons/fc";
 import OrderTable from "./OrderTable";
 import EmptyPageComponent from "./EmptyPageComponent";
 

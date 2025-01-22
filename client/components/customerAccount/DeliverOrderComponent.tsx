@@ -1,6 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import EmptyPageComponent from "../EmptyPageComponent";
 
 const DeliverOrderComponent = () => {

@@ -4,7 +4,7 @@ import React from "react";
 import img from "../../../assets/images/support-banner.jpg";
 import useSearchQuery from "@/hooks/useSearchQuery";
 
-const supportAccount = ({
+const SupportLayout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
     const {searchParams} = useSearchQuery();
@@ -38,4 +38,4 @@ const supportAccount = ({
   );
 };
 
-export default supportAccount;
+export default SupportLayout;

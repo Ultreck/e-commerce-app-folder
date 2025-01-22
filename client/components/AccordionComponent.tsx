@@ -7,11 +7,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const RenderContainer = ({content}: {content: any}) => {
+interface MessageObject {
+  type: string; 
+  text: string | string[]; 
+};
+const RenderContainer = ({content}: {content: {type: string, text: string | string[]}}) => {
+  console.log(content);
+  
 if(content.type === 'p'){
     return <p className="text leading-7">{content.text}</p>
 };
-if(content.type === 'list'){
+if(content.type === 'list' && content.text.length > 0){
     return <ul className="text">
         {content.text.map((list: any, index: number) => 
         <li className={`my-2 leading-6`} key={index}>{list}</li>
@@ -26,7 +32,7 @@ const AccordionComponent = ({
   content,
 }: {
   title: string;
-  content: any;
+  content: MessageObject;
 }) => {
     
   return (
