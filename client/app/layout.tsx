@@ -3,7 +3,6 @@ import "./globals.css";
 import localFont from "next/font/local";
 import NextSessionWrapper from "@/components/NextSessionWrapper";
 import FirstNavbar from "@/components/FirstNavbar";
-// import SecondNavbar from "@/components/SecondNavbar";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -75,9 +74,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={workSans.variable}>
           <FirstNavbar />
-          {/* <SecondNavbar /> */}
           <ToastContainer /> 
-          {/* <SliderComponent/> */}
           {children}
           <div className="bg-amber-800 text-white p-6">
             <FooterContactBanner />

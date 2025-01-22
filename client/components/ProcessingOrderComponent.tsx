@@ -3,25 +3,15 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FcProcess } from "react-icons/fc";
 import OrderTable from "./OrderTable";
+import EmptyPageComponent from "./EmptyPageComponent";
 
 const ProcessingOrderComponent = () => {
-  const [isLoading] = useState<boolean>(false);
+  const [isLoading] = useState<boolean>(true);
 
   return (
     <div>
       {isLoading && (
-        <div className="w-full">
-          <div className="flex justify-center items-center min-h-[60vh]">
-            <div
-              className=""
-            >
-              <FcProcess className="text-6xl text-gray-500 mx-auto" />
-              <p className="text mt-3">
-                {"You don't have any processing orders"}
-              </p>
-            </div>
-          </div>
-        </div>
+        <EmptyPageComponent caption="You don't have any processing orders" className="h-[80vh]" text='Your processing orders would be displayed here once you have one.'/>
       )}
       {!isLoading && (
         <motion.div
