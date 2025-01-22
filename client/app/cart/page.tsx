@@ -6,7 +6,7 @@ import React from "react";
 
 const ProductCart = () => {
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
-let cartItems = [];
+let cartItems: any = [];
   return (
     <div className="px-16 py-10">
       <div className="text my-5">
