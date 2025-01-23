@@ -21,10 +21,10 @@ interface addressFormType {
   lastName: string;
   phoneNumber: string;
   streetAddress: string;
-  apartment: string;
+  apartment?: string;
   city: string;
   state: string;
-  postalAddress: string;
+  postalAddress?: string;
 }
 interface formType {
   data: addressFormType;

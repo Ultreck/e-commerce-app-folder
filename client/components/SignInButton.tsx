@@ -1,7 +1,12 @@
 import React from "react";
 import { Button } from "./ui/button";
 
-const SignInButton = ({text, className}) => {
+interface SignInButtonProps {
+  text: string;
+  className?: string;
+}
+
+const SignInButton: React.FC<SignInButtonProps> = ({ text, className }) => {
   return (
     <div>
       <Button

@@ -5,9 +5,14 @@ import SupportDropdown from "./SupportDropdown";
 import { IoLocationOutline } from "react-icons/io5";
 import { userLocationStore } from "@/store/userLocationState";
 import AccountModalDialog from "./customerAccount/AccountModalDialog";
+interface ClientLocation {
+  city: string;
+  // Add other properties if needed
+}
+
 const SecondNavbar = () => {
   const [isScrolled, setIsScrolled] = useState<number>(0);
-  const { clientLocation } = userLocationStore();
+  const { clientLocation } = userLocationStore() as { clientLocation: ClientLocation };
 
   useEffect(() => {
     const handleScroll = () => {

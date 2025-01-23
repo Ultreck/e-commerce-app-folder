@@ -11,23 +11,10 @@ import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { heroCarousel } from "@/utils/constants";
 
-// interface carouselImgUrl {
-//   src: string;
-//   blurDataURL: string;
-//   blurHeight: number;
-//   blurWidth: number;
-//   height: number;
-//   width: number;
-// }
-// type carouselArr = {
-//   data: carouselImgUrl[];
-// };
 const HeroSectionCarousel = () => {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
-  console.log(heroCarousel);
-
   return (
     <Carousel
       plugins={[plugin.current]}

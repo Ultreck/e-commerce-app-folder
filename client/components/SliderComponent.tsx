@@ -17,7 +17,6 @@ const SliderComponent = ({className, ...props }: SliderProps) => {
   
       window.addEventListener("scroll", handleScroll);
   
-      // Cleanup the event listener on unmount
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };

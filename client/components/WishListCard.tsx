@@ -1,6 +1,5 @@
 import { ItemData } from "@/types/typeFiles";
 import { textTruncateFucntion } from "@/utils/constants";
-// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";

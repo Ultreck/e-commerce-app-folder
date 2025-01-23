@@ -224,7 +224,7 @@ const AccountPasswordSecurityModal = () => {
                   { test: /[a-z]/, message: "One lowercase letter" },
                   { test: /[0-9]/, message: "One number" },
                   { test: /[@#$!%*?&]/, message: "One special character" },
-                ].map((condition, index) => (
+                ].map((__, index) => (
                   <li key={index}>
                     {index + 1 <= 1 && (
                       <VerticalTextSlider
