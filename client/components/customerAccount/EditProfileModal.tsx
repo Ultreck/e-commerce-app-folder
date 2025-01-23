@@ -63,7 +63,7 @@ const EditProfileModal: React.FC<userType> = ({ user }) => {
   const onSubmit = (data: formOutPutType) => {
     const formData = new FormData();
     formData.append("name", data.fullName);
-    if (fileRef?.current?.files[0]) {
+    if (fileRef.current && fileRef.current.files && fileRef.current.files[0]) {
       formData.append("file", fileRef?.current?.files[0]);
     }
 

@@ -42,8 +42,8 @@ interface ItemData {
   color: string[];
 }
 
-const ProductDetailsPage = ({ params }) => {
-  const { id } = React.use(params);
+const ProductDetailsPage = ({ params,}: { params: Promise<{ id: string }>}) => {
+  const { id } = React.use(params) as {id: string};
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   const [data, setData] = useState<ItemData | undefined>(undefined);
@@ -125,7 +125,7 @@ const ProductDetailsPage = ({ params }) => {
             <div className="text flex gap-1">
               <span className="text-black font-semibold">70 review</span>|{" "}
               {data?.rating}
-              <RatingComponent rating={data?.rating as number} />
+              <RatingComponent rating={data?.rating as number} color="" />
             </div>
             <p className="text mt-1 border-b py-1 mb-5">Item reviews</p>
             <div className="text my-10">
@@ -136,7 +136,7 @@ const ProductDetailsPage = ({ params }) => {
                 <div className="text">John Doe</div>
               </div>
               <div className="text my-2">
-                <RatingComponent rating={4.5} />
+                <RatingComponent rating={4.5} color="" />
               </div>
               <div className="text mt-1">
                 Good item, super deal and smart, absolutely beautiful
@@ -150,7 +150,7 @@ const ProductDetailsPage = ({ params }) => {
                 <div className="text">Tsime Obuseng</div>
               </div>
               <div className="text my-2">
-                <RatingComponent rating={5} />
+                <RatingComponent rating={5} color="" />
               </div>
               <div className="text mt-1">
                 Good deal and smart and , pleased with product
@@ -164,7 +164,7 @@ const ProductDetailsPage = ({ params }) => {
                 <div className="text">Tsime Obuseng</div>
               </div>
               <div className="text my-2">
-                <RatingComponent rating={5} />
+                <RatingComponent rating={5} color="" />
               </div>
               <div className="text mt-1">
                 I like the item, it is in good condition, good quality.
@@ -178,7 +178,7 @@ const ProductDetailsPage = ({ params }) => {
                 <div className="text">Norbert Langefeld</div>
               </div>
               <div className="text my-2">
-                <RatingComponent rating={5} />
+                <RatingComponent rating={5} color="" />
               </div>
               <div className="text mt-1">
                 Item was as described, everything is great.
@@ -192,7 +192,7 @@ const ProductDetailsPage = ({ params }) => {
                 <div className="text">ony***7756</div>
               </div>
               <div className="text my-2">
-                <RatingComponent rating={5} />
+                <RatingComponent rating={5} color="" />
               </div>
               <div className="text mt-1">It is an amazing item</div>
             </div>
@@ -220,7 +220,7 @@ const ProductDetailsPage = ({ params }) => {
               <span className="text">{data?.noSold}</span>
               <span className="text-black text-xl w-40 font-medium gap-1 flex items-center">
                 {data?.rating}
-                <RatingComponent rating={data?.rating as number} />
+                <RatingComponent rating={data?.rating as number} color="" />
               </span>
             </span>
             <p className="text-white bg-[#23941A] w-24 text-center rounded-tl-lg px-2 py-1 rounded-br-lg">
@@ -231,7 +231,7 @@ const ProductDetailsPage = ({ params }) => {
                 <span className="text flex items-baseline text-black font-semibold">
                   <span className="text p-0 mx-0 text-md">₦</span>
                   <p className="text p-0 mx-0 text-2xl ">
-                    {(quantity * data?.cPrice).toLocaleString()}
+                    {(quantity * (data?.cPrice ?? 0)).toLocaleString()}
                   </p>
                 </span>
               </span>
@@ -284,7 +284,7 @@ const ProductDetailsPage = ({ params }) => {
               </div>
             )}
             <div className="text">
-              {data?.compactibleModel?.length > 0 && (
+              {data?.compactibleModel && data.compactibleModel.length > 0 && (
                 <>
                   <h1 className="mt-1">Compatible Model: </h1>
                   <ScrollArea className="h-[100px]  ">
@@ -301,7 +301,7 @@ const ProductDetailsPage = ({ params }) => {
                   </ScrollArea>
                 </>
               )}
-              {data?.color?.length > 0 && (
+              {data?.color && data?.color?.length > 0 && (
                 <div className="text flex mt-5">
                   <h1 className="text-black font-semibold mr-1">Color: </h1>
                   <div className="text">
@@ -309,7 +309,7 @@ const ProductDetailsPage = ({ params }) => {
                   </div>
                 </div>
               )}
-              {data?.ukSize?.length > 0 || data?.stdSize?.length > 0 ? (
+              {data?.ukSize && (data?.ukSize?.length > 0 || data?.stdSize?.length > 0) ? (
                 <>
                   <ScrollArea className="h-[100px] mt-2 md:w-[380px]">
                     <Tabs defaultValue={data?.ukSize?.length > 0 && data?.stdSize?.length > 0? "uk" : data?.ukSize?.length === 0 && data?.stdSize?.length > 0? "standard" : "uk"} className="md:w-[400px]">
@@ -385,7 +385,7 @@ const ProductDetailsPage = ({ params }) => {
               </div>
             </div>
             <div className="text">
-              {cartIds.includes(data?.id) ? (
+              {data?.id && cartIds.includes(data.id) ? (
                 <button
                   disabled
                   className="text rounded-full py-2 bg-gray-400 text-white relative overflow-hidden group w-full"
@@ -396,7 +396,9 @@ const ProductDetailsPage = ({ params }) => {
               ) : (
                 <button
                   onClick={() => {
-                    addCartItem(data?.id);
+                    if (data?.id) {
+                      addCartItem(data.id);
+                    }
                       toast.success(
                         "The item is successfully added, click the cart to view",
                         {

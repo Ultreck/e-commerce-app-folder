@@ -8,25 +8,37 @@ import {
 } from "@/components/ui/accordion";
 
 interface MessageObject {
-  type: string; 
-  text: string[] | string; 
-};
-const RenderContainer = ({content}: {content: {type: string, text: string | string[]}}) => {
-  console.log(content);
-  
-if(content.type === 'p'){
-    return <p className="text leading-7">{content.text}</p>
-};
-if(content.type === 'list' && content.text.length > 0){
-    return <ul className="text">
-        {content.text.map((list: string, index: number) => 
-        <li className={`my-2 leading-6`} key={index}>{list}</li>
-        
-        )}
-    </ul>
-};
-if(content.type === 'link'){};
+  type: string;
+  text: string[] | string;
 }
+const RenderContainer = ({
+  content,
+}: {
+  content: { type: string; text: string | string[] };
+}) => {
+  console.log(content);
+
+  if (content.type === "p") {
+    return <p className="text leading-7">{content.text}</p>;
+  }
+  if (
+    content.type === "list" &&
+    Array.isArray(content.text) &&
+    content.text.length > 0
+  ) {
+    return (
+      <ul className="text">
+        {content.text.map((list: string, index: number) => (
+          <li className={`my-2 leading-6`} key={index}>
+            {list}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  if (content.type === "link") {
+  }
+};
 const AccordionComponent = ({
   title,
   content,
@@ -34,7 +46,6 @@ const AccordionComponent = ({
   title: string;
   content: MessageObject;
 }) => {
-    
   return (
     <>
       <Accordion type="single" collapsible>
@@ -43,7 +54,7 @@ const AccordionComponent = ({
             {title}
           </AccordionTrigger>
           <AccordionContent className="px-4">
-            <RenderContainer content={content}/>
+            <RenderContainer content={content} />
           </AccordionContent>
         </AccordionItem>
       </Accordion>
