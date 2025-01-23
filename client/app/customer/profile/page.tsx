@@ -12,10 +12,7 @@ interface userType {
 }
 
 const CustomerProfile = () => {
-  const { data: session } = useSession();
-
-  console.log(session);
-  
+  const { data: session } = useSession();  
   const initials = session?.user?.name
     ?.split(" ")
     .map((word) => word[0])
