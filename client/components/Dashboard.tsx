@@ -4,7 +4,6 @@ import React from "react";
 import ItemsCard from "./ItemsCard";
 import { itemsDummyData } from "@/utils/helper";
 import HomeProgressBar from "./HomeProgressBar";
-import { CardDataType } from "@/types/typeFiles";
 import HeroSectionCarousel from "./HeroSectionCarousel";
 import { heroCarousel } from "@/utils/constants";
 
