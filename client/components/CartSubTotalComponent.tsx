@@ -1,5 +1,4 @@
 import { userCartItemsStore } from "@/store/cartItems";
-import { CardDataType } from "@/types/typeFiles";
 import React from "react";
 import {
   FaCcDinersClub,

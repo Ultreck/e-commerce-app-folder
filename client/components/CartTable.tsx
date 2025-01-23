@@ -13,22 +13,22 @@ const CartTable = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const { quantity, setQuantity } = useProductData();
   const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
-  const [cartItems, setCartItems] = useState<any>(itemsDummyData);
-  const updateQuantity = (id: string, increament: boolean) => {
-    setCartItems(
-      itemsDummyData.map((value: ItemData) => {
-        if (value.id === id) {
-          return {
-            ...value,
-            quantity: increament
-              ? value.quantity + 1
-              : Math.max(value.quantity - 1, 1),
-          };
-        }
-        return value;
-      })
-    );
-  };
+  // const [cartItems, setCartItems] = useState<any>(itemsDummyData);
+  // const updateQuantity = (id: string, increament: boolean) => {
+  //   setCartItems(
+  //     itemsDummyData.map((value: ItemData) => {
+  //       if (value.id === id) {
+  //         return {
+  //           ...value,
+  //           quantity: increament
+  //             ? value.quantity + 1
+  //             : Math.max(value.quantity - 1, 1),
+  //         };
+  //       }
+  //       return value;
+  //     })
+  //   );
+  // };
 
   return (
     <div className="text">
@@ -41,7 +41,7 @@ const CartTable = () => {
           <div className="text">Remove</div>
         </div>
         <div className="text">
-          {cartItems
+          {itemsDummyData
             .filter((item: ItemData) => cartIds.includes(item.id))
             .map((matched: ItemData, index: number) => (
               <div
@@ -83,7 +83,7 @@ const CartTable = () => {
                   <div className="text flex items-center my-3 gap-2">
                     <div
                       onClick={() => {
-                        updateQuantity(matched.id, false);
+                        // updateQuantity(matched.id, false);
                         if (quantity > 1) {
                           setQuantity((prev) => prev - 1);
                         } else {
@@ -103,7 +103,7 @@ const CartTable = () => {
                     </span>
                     <div
                       onClick={() => {
-                        updateQuantity(matched.id, true);
+                        // updateQuantity(matched.id, true);
                         if (index === currentIndex) {
                           setQuantity((prev) => prev + 1);
                         }

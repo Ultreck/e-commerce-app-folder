@@ -3,7 +3,7 @@ import EmptyPageComponent from '@/components/EmptyPageComponent'
 import WishListCard from '@/components/WishListCard'
 import { userWishListItemsStore } from '@/store/wishListItems'
 import { itemsDummyData } from '@/utils/helper'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 const CustomerWishlist = () => {
   const wishListId = userWishListItemsStore((state) => state.wishListCardsDatas);

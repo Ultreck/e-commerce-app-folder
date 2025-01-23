@@ -9,7 +9,7 @@ import {
 
 interface MessageObject {
   type: string; 
-  text: string | string[]; 
+  text: string[] | string; 
 };
 const RenderContainer = ({content}: {content: {type: string, text: string | string[]}}) => {
   console.log(content);
@@ -19,7 +19,7 @@ if(content.type === 'p'){
 };
 if(content.type === 'list' && content.text.length > 0){
     return <ul className="text">
-        {content.text.map((list: any, index: number) => 
+        {content.text.map((list: string, index: number) => 
         <li className={`my-2 leading-6`} key={index}>{list}</li>
         
         )}
