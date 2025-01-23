@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
-import tailwindcssRipple from "tailwindcss-ripple";
+// import tailwindcssRipple from "tailwindcss-ripple";
 
 const config: Config = {
   darkMode: ["class"],
@@ -102,7 +102,7 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [tailwindcssAnimate, tailwindcssRipple],
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;
