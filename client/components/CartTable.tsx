@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { FaMinus, FaPlus } from "react-icons/fa";
