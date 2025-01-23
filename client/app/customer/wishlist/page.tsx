@@ -7,9 +7,7 @@ import React, { useEffect } from 'react'
 
 const CustomerWishlist = () => {
   const wishListId = userWishListItemsStore((state) => state.wishListCardsDatas);
-  useEffect(() => {
-  console.log(wishListId);
-  
+  useEffect(() => {  
   }, [])
   return (
     <div>

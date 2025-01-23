@@ -7,9 +7,7 @@ import React from "react";
 const CustomerAddress = () => {
   const {searchParams} =  useSearchQuery();
   const queryString = searchParams?.get("type");
-  const queryData = JSON.parse(searchParams?.get("data") as string);
-  console.log(queryData);
-  
+  const queryData = JSON.parse(searchParams?.get("data") as string);  
   return (
     <div>
       {queryString === 'create' && <AddressForm data={queryData} type={queryString}/>}

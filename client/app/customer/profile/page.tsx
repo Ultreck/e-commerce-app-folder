@@ -4,9 +4,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSession } from "next-auth/react";
 import React from "react";
 
+
+interface userType {
+    name: string;
+    image: string;
+    email: string;
+}
+
 const CustomerProfile = () => {
   const { data: session } = useSession();
 
+  console.log(session);
+  
   const initials = session?.user?.name
     ?.split(" ")
     .map((word) => word[0])
@@ -23,8 +32,8 @@ const CustomerProfile = () => {
               </Avatar>
               <div className="text py-1 px-2">
                 <div className="text-base pr-3">
-                  {session?.user?.name}{" "}
-                  <EditProfileModal user={session?.user} />{" "}
+                  {session?.user?.name}
+                  {session !== undefined && <EditProfileModal user={session?.user as userType} />}
                 </div>
                 <div className="text-sm text-gray-400 font-normal pr-1">
                   {session?.user?.email}

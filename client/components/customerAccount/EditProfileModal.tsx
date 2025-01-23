@@ -33,16 +33,20 @@ const formSchema = z.object({
 });
 
 interface userType {
-  name: string;
-  image: string;
-  email: string;
+  user: {
+    name: string;
+    image: string;
+    email: string;
+  };
 }
 
 interface formOutPutType {
   fullName: string;
 }
 
-const EditProfileModal = ({ user }: { user: userType }) => {
+const EditProfileModal: React.FC<userType> = ({ user }) => {
+  console.log(user);
+  
   const fileRef = useRef<HTMLInputElement | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
