@@ -14,11 +14,11 @@ import { RiMastercardFill } from "react-icons/ri";
 import Link from "next/link";
 
 const CartSubTotalComponent = () => {
-  const [cartIds, setcartIds] = useState<string[]>([]);
+  const [cartIds, setCartIds] = useState<string[]>([]);
 
   useEffect(() => {
     const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
-    setcartIds(cartStoredData);    
+    setCartIds(cartStoredData);    
   }, []);
 
   return (

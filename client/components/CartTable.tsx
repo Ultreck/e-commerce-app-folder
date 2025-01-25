@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import RatingComponent from "./RatingComponent";
@@ -13,7 +13,14 @@ import ItemsCard from "./ItemsCard";
 const CartTable = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const { quantity, setQuantity } = useProductData();
-  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  const [cartIds, setCartIds] = useState<string[]>([]);
+
+  useEffect(() => {
+  const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
+  setCartIds(cartStoredData);  
+  }, [])
+  
+  // const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   // const [cartItems, setCartItems] = useState<any>(itemsDummyData);
   // const updateQuantity = (id: string, increament: boolean) => {
   //   setCartItems(

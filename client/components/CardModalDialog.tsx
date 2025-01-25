@@ -29,11 +29,11 @@ import { toast } from "react-toastify";
 
 const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
-  const [cartIds, setcartIds] = useState<string[]>([]);
+  const [cartIds, setCartIds] = useState<string[]>([]);
   const [isIncludes, setisIncludes] = useState<string>("yes");
   useEffect(() => {
     const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
-    setcartIds(cartStoredData);
+    setCartIds(cartStoredData);
   }, [isIncludes]);
 
   const {

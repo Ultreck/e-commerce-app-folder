@@ -44,14 +44,14 @@ interface ItemData {
 
 const ProductDetailsPage = ({ params,}: { params: Promise<{ id: string }>}) => {
   const { id } = React.use(params) as {id: string};
-  const [cartIds, setcartIds] = useState<string[]>([])
+  const [cartIds, setCartIds] = useState<string[]>([])
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
   const [data, setData] = useState<ItemData | undefined>(undefined);
 
 
   useEffect(() => {
     const cartStoredData =  userCartItemsStore.getState().cartCardsDatas;
-    setcartIds(cartStoredData);
+    setCartIds(cartStoredData);
   }, []);
   
   useEffect(() => {
