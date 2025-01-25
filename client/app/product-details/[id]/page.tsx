@@ -44,9 +44,16 @@ interface ItemData {
 
 const ProductDetailsPage = ({ params,}: { params: Promise<{ id: string }>}) => {
   const { id } = React.use(params) as {id: string};
+  const [cartIds, setcartIds] = useState<string[]>([])
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
-  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   const [data, setData] = useState<ItemData | undefined>(undefined);
+
+
+  useEffect(() => {
+    const cartStoredData =  userCartItemsStore.getState().cartCardsDatas;
+    setcartIds(cartStoredData);
+  }, []);
+  
   useEffect(() => {
     const found = itemsDummyData.find((item) => item.id === id);
     setData(found);

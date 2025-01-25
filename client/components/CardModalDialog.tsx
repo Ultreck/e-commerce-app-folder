@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -29,7 +29,12 @@ import { toast } from "react-toastify";
 
 const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
-  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  const [cartIds, setcartIds] = useState<string[]>([]);
+  const [isIncludes, setisIncludes] = useState<string>("yes");
+  useEffect(() => {
+    const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
+    setcartIds(cartStoredData);
+  }, [isIncludes]);
 
   const {
     scrollAreaRef,
@@ -282,6 +287,7 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                     <button
                       onClick={() => {
                         addCartItem(data.id);
+                        setisIncludes("no");
                         toast.success(
                           "The item is successfully added, click the cart to view",
                           {

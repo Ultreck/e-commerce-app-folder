@@ -1,6 +1,6 @@
 'use client'
 import { userCartItemsStore } from "@/store/cartItems";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaCcDinersClub,
   FaCcJcb,
@@ -14,7 +14,12 @@ import { RiMastercardFill } from "react-icons/ri";
 import Link from "next/link";
 
 const CartSubTotalComponent = () => {
-  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  const [cartIds, setcartIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
+    setcartIds(cartStoredData);    
+  }, []);
 
   return (
     <div className="sticky text-gray-600 top-20 px-5">
