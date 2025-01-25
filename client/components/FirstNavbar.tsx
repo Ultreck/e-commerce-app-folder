@@ -16,8 +16,7 @@ import { TbHexagonLetterSFilled } from "react-icons/tb";
 const FirstNavbar = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
-  const [cartIds, setCartIds] = useState<string[]>([]);
-  // const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
+  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
   const wishListIds = userWishListItemsStore(
     (state) => state.wishListCardsDatas
   );
