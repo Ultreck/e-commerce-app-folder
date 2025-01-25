@@ -48,7 +48,7 @@ import { create } from "zustand";
 
 const getCartFromLocalStorage = () => {
   if (typeof window !== "undefined") {
-    const storedCart = window.localStorage.getItem("cartCardsDatas");
+    const storedCart = window?.localStorage.getItem("cartCardsDatas");
     return storedCart ? JSON.parse(storedCart) : [];
   }
   return []; // Fallback for SSR
@@ -58,7 +58,7 @@ const setCartToLocalStorage = (cart: string[]) => {
   if (typeof window !== "undefined") {
     const localIds = getCartFromLocalStorage();
     if (!localIds.includes(cart)) {
-      window.localStorage.setItem("cartCardsDatas", JSON.stringify(cart));
+      window?.localStorage.setItem("cartCardsDatas", JSON.stringify(cart));
     }
   }
 };
