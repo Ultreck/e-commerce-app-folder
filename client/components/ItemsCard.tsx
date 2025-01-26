@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Tooltip,
@@ -23,6 +23,7 @@ import { userWishListItemsStore } from "@/store/wishListItems";
 const ItemsCard: React.FC<CardDataType> = ({ data }) => {
   const [, setIsAddedToWishlist] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [wishListIds, setwishListIds] = useState<string[]>([]);
   const toggleWishlist = () => {
     setIsAddedToWishlist((prevState) => !prevState);
   };
@@ -33,9 +34,11 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
   const removeWishListItem = userWishListItemsStore(
     (state) => state.removeWishListItem
   );
-  const wishListIds = userWishListItemsStore(
-    (state) => state.wishListCardsDatas
-  );
+ useEffect(() => {
+   const wishListStoredData = userWishListItemsStore.getState().wishListCardsDatas;
+   setwishListIds(wishListStoredData);
+ }, []);
+ 
 
   return (
     <Card

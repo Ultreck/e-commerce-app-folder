@@ -1,14 +1,21 @@
 import { create } from "zustand";
 
 const getWishListFromLocalStorage = () => {
-  const storeWishList = localStorage.getItem("wishListCardsDatas");
-  return storeWishList ? JSON.parse(storeWishList) : [];
-};
+  if (typeof window !== "undefined") {
+    const storeWishList = window?.localStorage.getItem("wishListCardsDatas");
+    return storeWishList ? JSON.parse(storeWishList) : [];
+  }
+};  
 
 const setCartToLocalStorage = (wishList: string[]) => {
-  const localIds = getWishListFromLocalStorage();
-  if (!localIds.includes(wishList)) {
-    localStorage.setItem("wishListCardsDatas", JSON.stringify(wishList));
+  if (typeof window !== "undefined") {
+    const localIds = getWishListFromLocalStorage();
+    if (!localIds.includes(wishList)) {
+      window?.localStorage.setItem(
+        "wishListCardsDatas",
+        JSON.stringify(wishList)
+      );
+    }
   }
 };
 

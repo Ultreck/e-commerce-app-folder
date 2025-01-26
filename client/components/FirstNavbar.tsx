@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchProduct from "./SearchProduct";
 import LocationField from "./LocationField";
 import { FaRegHeart } from "react-icons/fa";
@@ -16,10 +16,20 @@ import { TbHexagonLetterSFilled } from "react-icons/tb";
 const FirstNavbar = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
-  const cartIds = userCartItemsStore((state) => state.cartCardsDatas);
-  const wishListIds = userWishListItemsStore(
-    (state) => state.wishListCardsDatas
-  );
+  const [cartIds, setCartIds] = useState<string[]>([]);
+  const [wishListIds, setWishListIds] = useState<string[]>([]);
+ 
+
+  useEffect(() => {
+    const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
+    setCartIds(cartStoredData);
+  }, []);
+
+  useEffect(() => {
+   const wishListStoredData = userWishListItemsStore.getState().wishListCardsDatas;
+    setWishListIds(wishListStoredData);
+  }, []);
+  
 
   return (
     <div
