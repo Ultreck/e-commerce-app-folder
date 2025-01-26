@@ -7,8 +7,6 @@ import HomeProgressBar from "./HomeProgressBar";
 import HeroSectionCarousel from "./HeroSectionCarousel";
 import { heroCarousel } from "@/utils/constants";
 
-
-
 const Dashboard = () => {
   
   return (
