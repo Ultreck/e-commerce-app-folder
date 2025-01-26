@@ -1,18 +1,29 @@
-'use client'
+"use client";
 import AddressCard from "@/components/customerAccount/AddressCard";
 import AddressForm from "@/components/customerAccount/AddressForm";
 import useSearchQuery from "@/hooks/useSearchQuery";
-import React from "react";
+import React, { Suspense } from "react";
+import Loading from "./loading";
 
 const CustomerAddress = () => {
-  const {searchParams} =  useSearchQuery();
+  const { searchParams } = useSearchQuery();
   const queryString = searchParams?.get("type");
-  const queryData = JSON.parse(searchParams?.get("data") as string);  
+  const queryData = JSON.parse(searchParams?.get("data") as string);
   return (
     <div>
-      {queryString === 'create' && <AddressForm data={queryData} type={queryString}/>}
-      {queryString !== 'create' && queryString !== "edit" && <AddressCard />}
-      {queryString === 'edit' && <AddressForm data={queryData} type={queryString}/>}
+      <Suspense fallback={<Loading />}>
+        {queryString === "create" && (
+          <AddressForm data={queryData} type={queryString} />
+        )}
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        {queryString !== "create" && queryString !== "edit" && <AddressCard />}
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        {queryString === "edit" && (
+          <AddressForm data={queryData} type={queryString} />
+        )}
+      </Suspense>
     </div>
   );
 };

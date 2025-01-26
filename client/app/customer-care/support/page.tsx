@@ -11,7 +11,8 @@ import Reviews from "@/components/supportCenter/Reviews";
 import Shipping from "@/components/supportCenter/Shipping";
 import SigningIn from "@/components/supportCenter/SigningIn";
 import useSearchQuery from "@/hooks/useSearchQuery";
-import React from "react";
+import React, { Suspense } from "react";
+import Loading from "./loading";
 
 const SupportHomePage = () => {
   const { searchParams } = useSearchQuery();
@@ -19,30 +20,30 @@ const SupportHomePage = () => {
 
   return (
     <div>
-      <div className="text">
-        {JSON.parse(supportType as string) === "Buying on Shoplicity" && (
-          <BuyingOnShoplicity />
-        )}
-        {JSON.parse(supportType as string) === null && (
-          <BuyingOnShoplicity />
-        )}
-        {JSON.parse(supportType as string) === "Checkout" && <Checkout />}
-        {JSON.parse(supportType as string) === "Find my order" && (
-          <FindMyOrder />
-        )}
-        {JSON.parse(supportType as string) === "Order changes" && (
-          <OrderChanges />
-        )}
-        {JSON.parse(supportType as string) === "Reviews" && <Reviews />}
-        {JSON.parse(supportType as string) === "Shipping" && <Shipping />}
-        {JSON.parse(supportType as string) === "Delivery" && <Delivery />}
-        {JSON.parse(supportType as string) === "Returns" && <Return />}
-        {JSON.parse(supportType as string) === "Refunds" && <Refund />}
-        {JSON.parse(supportType as string) === "Account preferences" && (
-          <AccountPreferences />
-        )}
-        {JSON.parse(supportType as string) === "Signing in" && <SigningIn />}
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div className="text">
+          {JSON.parse(supportType as string) === "Buying on Shoplicity" && (
+            <BuyingOnShoplicity />
+          )}
+          {JSON.parse(supportType as string) === null && <BuyingOnShoplicity />}
+          {JSON.parse(supportType as string) === "Checkout" && <Checkout />}
+          {JSON.parse(supportType as string) === "Find my order" && (
+            <FindMyOrder />
+          )}
+          {JSON.parse(supportType as string) === "Order changes" && (
+            <OrderChanges />
+          )}
+          {JSON.parse(supportType as string) === "Reviews" && <Reviews />}
+          {JSON.parse(supportType as string) === "Shipping" && <Shipping />}
+          {JSON.parse(supportType as string) === "Delivery" && <Delivery />}
+          {JSON.parse(supportType as string) === "Returns" && <Return />}
+          {JSON.parse(supportType as string) === "Refunds" && <Refund />}
+          {JSON.parse(supportType as string) === "Account preferences" && (
+            <AccountPreferences />
+          )}
+          {JSON.parse(supportType as string) === "Signing in" && <SigningIn />}
+        </div>
+      </Suspense>
     </div>
   );
 };

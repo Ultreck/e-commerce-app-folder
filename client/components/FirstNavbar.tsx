@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import SearchProduct from "./SearchProduct";
 import LocationField from "./LocationField";
 import { FaRegHeart } from "react-icons/fa";
@@ -12,13 +12,13 @@ import AccountModalDialog from "./customerAccount/AccountModalDialog";
 import SupportDropdown from "./SupportDropdown";
 import DropdownElement from "./DropdownElement";
 import { TbHexagonLetterSFilled } from "react-icons/tb";
+import Loading from "@/app/loading";
 
 const FirstNavbar = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
   const [cartIds, setCartIds] = useState<string[]>([]);
   const [wishListIds, setWishListIds] = useState<string[]>([]);
- 
 
   useEffect(() => {
     const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
@@ -26,10 +26,10 @@ const FirstNavbar = () => {
   }, []);
 
   useEffect(() => {
-   const wishListStoredData = userWishListItemsStore.getState().wishListCardsDatas;
+    const wishListStoredData =
+      userWishListItemsStore.getState().wishListCardsDatas;
     setWishListIds(wishListStoredData);
   }, []);
-  
 
   return (
     <div
@@ -48,14 +48,18 @@ const FirstNavbar = () => {
           </Link>
         </div>
         <div className="text">
-          <DropdownElement />
+          <Suspense fallback={<Loading />}>
+            <DropdownElement />
+          </Suspense>
         </div>
         <div className="text w-3/5">
           <SearchProduct />
         </div>
       </div>
       <div className="text flex justify-between gap-5 items-center">
-        <SupportDropdown />
+        <Suspense fallback={<Loading />}>
+          <SupportDropdown />
+        </Suspense>
         <div className="text">
           <AccountModalDialog />
         </div>
