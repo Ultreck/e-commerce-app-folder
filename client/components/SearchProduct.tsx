@@ -53,7 +53,7 @@ const SearchProduct = () => {
                   placeholder="Search for items..."
                   type="text"
                   {...field}
-                  className="bg-primary-1 h-12"
+                  className="bg-primary-1 h-12 focus-visible:ring-1 focus-visible:ring-primary-2"
                 />
               </FormControl>
 
