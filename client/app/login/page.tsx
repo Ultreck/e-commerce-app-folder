@@ -5,7 +5,7 @@ import React from "react";
 
 const LoginPage = () => {
   return (
-    <div className="flex justify-center items-center py-10">
+    <div className="flex justify-center items-center py-10 bg-white/50 h-screen">
       {/* <RoughWork /> */}
       <Register />
       <div className="text -z-20">
