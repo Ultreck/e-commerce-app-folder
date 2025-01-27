@@ -76,7 +76,7 @@ export default function RootLayout({
           <FirstNavbar />
           <ToastContainer /> 
           {children}
-          <div className="bg-amber-800 text-white p-6">
+          <div className="">
             <FooterContactBanner />
           </div>
           <Footer />

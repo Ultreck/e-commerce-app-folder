@@ -1,13 +1,16 @@
+'use client'
 import React from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { MdOutlineMail } from "react-icons/md";
 import Image from "next/image";
 import img from "../assets/images/newsletterImg.png"
+import useSearchQuery from "@/hooks/useSearchQuery";
 
 const FooterContactBanner = () => {
+  const {pathName} = useSearchQuery();
   return (
-    <div className="flex items-center justify-between md:pl-16">
+    <div className={`flex ${pathName === "/login"? "hidden" : ""} bg-amber-800 text-white p-6 items-center justify-between md:pl-16`}>
       <div className="text lg:p-5 lg:w-2/5">
         <p className="text-[18px]">50% discount for your first order</p>
         <h1 className="lg:text-[35px] text-[24px] font-semibold">Join our newsletter and get...</h1>

@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { IoShirtOutline } from "react-icons/io5";
 import { GrDeliver } from "react-icons/gr";
@@ -7,10 +8,12 @@ import Link from "next/link";
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
+import useSearchQuery from "@/hooks/useSearchQuery";
 
 const Footer = () => {
+  const {pathName} = useSearchQuery();
   return (
-    <div className="px-10 pb-16">
+    <div className={`px-10 ${pathName === "/login"? "hidden" : ""} pb-16`}>
       <div className="text-center grid grid-cols-2 lg:grid-cols-4 mt-8">
         <div className="text flex lg:items-center justify-center gap-1 py-5">
           <IoShirtOutline className="hidden lg:flex" />

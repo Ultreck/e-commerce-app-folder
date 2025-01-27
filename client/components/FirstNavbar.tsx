@@ -13,13 +13,15 @@ import SupportDropdown from "./SupportDropdown";
 import DropdownElement from "./DropdownElement";
 import { TbHexagonLetterSFilled } from "react-icons/tb";
 import Loading from "@/app/loading";
+import useSearchQuery from "@/hooks/useSearchQuery";
 
 const FirstNavbar = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
   const [cartIds, setCartIds] = useState<string[]>([]);
   const [wishListIds, setWishListIds] = useState<string[]>([]);
-
+  const { pathName } = useSearchQuery();
+  console.log(pathName);
   useEffect(() => {
     const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
     setCartIds(cartStoredData);
@@ -33,7 +35,7 @@ const FirstNavbar = () => {
 
   return (
     <div
-      className={`bg-white sticky top-0 border-b px-16 z-20 py-1 flex justify-between`}
+      className={`bg-white ${pathName === "/login"? "hidden" : ""} sticky top-0 border-b px-16 z-20 py-1 flex justify-between`}
     >
       <div className="text flex items-center justify-center w-1/2 gap-5">
         <div className="text">
