@@ -18,11 +18,6 @@ const SupportDropdown = () => {
     <div>
       {" "}
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-        <div
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-          className=""
-        >
           <DropdownMenuTrigger className="outline-none">
             <div className="text-sm text-gray-500 border-0 flex items-center justify-between gap-2">
               <BiSupport />
@@ -54,7 +49,6 @@ const SupportDropdown = () => {
               </div>
             ))}
           </DropdownMenuContent>
-        </div>
       </DropdownMenu>
     </div>
   );

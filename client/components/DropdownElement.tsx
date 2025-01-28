@@ -24,11 +24,6 @@ const category = searchParams?.get('category');
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-      <div
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-        className=""
-      >
         <DropdownMenuTrigger className="outline-none">
           <div className="text-sm text-gray-500 border-0 flex items-center justify-center">
             Categories{" "}
@@ -65,7 +60,6 @@ const category = searchParams?.get('category');
             </div>
           </div>
         </DropdownMenuContent>
-      </div>
     </DropdownMenu>
   );
 };
