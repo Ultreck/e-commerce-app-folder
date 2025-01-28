@@ -7,7 +7,6 @@ import { RxCross2 } from "react-icons/rx";
 import CardModalDialog from "./CardModalDialog";
 
 const WishListCard = ({ data }: { data: ItemData }) => {
-  console.log(data);
 
   return (
     <div className="px-5">
