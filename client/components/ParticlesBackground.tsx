@@ -94,7 +94,7 @@ const ParticlesBackground = (props: ParticlesBackgroundProps) => {
         detectRetina: true,
     }), []);
 
-    return init &&  <Particles style={{zIndex: "-100"}} id={props.id} init={particlesLoaded} options={options} />;
+    return init &&  <Particles id={props.id} init={particlesLoaded} options={options} />;
 };
 
 export default ParticlesBackground;

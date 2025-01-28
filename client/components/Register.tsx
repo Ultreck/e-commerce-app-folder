@@ -20,7 +20,17 @@ import { TbHexagonLetterSFilled } from "react-icons/tb";
 import VerticalTextSlider from "./VerticalTextSlider";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Progress } from "./ui/progress";
-
+import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import { Separator } from "./ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import useSearchQuery from "@/hooks/useSearchQuery";
 const formSchema = z
   .object({
     email: z.string().email("Invalid email address"),
@@ -48,9 +58,19 @@ const Register = () => {
   const [password2, setPassword2] = useState<boolean>(false);
   const [, setPassword] = useState<string>("");
   const [progress, setProgress] = useState<number>(0);
+  const [isFocus1, setIsFocus1] = useState<boolean>(false);
+  const [isFocus2, setIsFocus2] = useState<boolean>(false);
+  const [isFocus3, setIsFocus3] = useState<boolean>(false);
+  const { pathName, router, createSearchQueryString } = useSearchQuery();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
+  
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -102,21 +122,26 @@ const Register = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 max-w-3xl mx-auto py-10"
+          className="space-y-5 max-w-3xl mx-auto pt-5"
         >
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                {/* <FormLabel>Email</FormLabel> */}
                 <FormControl>
-                  <div className="text h-12 border rounded-lg focus-visible:ring-primary-2">
+                  <div className={`text h-12 border ${isFocus1 && "bg-gray-100"} rounded-lg focus-visible:ring-primary-2`}>
                     <Input
                       placeholder="Enter your email address"
                       type="text"
                       {...field}
-                      className="border-0 h-full focus-visible:ring-0 shadow-none "
+                      className="border-0 h-full focus-visible:ring-0 shadow-none"
+                      onFocus={() => {
+                        setIsFocus1(true);
+                    }}
+                    onBlur={() => {
+                          setIsFocus1(false);
+                      }}
                     />
                   </div>
                 </FormControl>
@@ -125,15 +150,13 @@ const Register = () => {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="password"
             render={({ field }) => (
               <FormItem>
-                {/* <FormLabel>Password</FormLabel> */}
                 <FormControl>
-                  <div className="text grid h-12 grid-cols-12 border  rounded-lg ">
+                  <div className={`text grid h-12 ${isFocus2 && "bg-gray-100"} grid-cols-12 border  rounded-lg`}>
                     <Input
                       value={field.value}
                       onChange={(value) => {
@@ -143,6 +166,13 @@ const Register = () => {
                       className="border-0 h-full focus-visible:ring-0 shadow-none col-span-11"
                       placeholder="Enter your password"
                       type={password1 ? "text" : "password"}
+                      onFocus={() => {
+                        setIsFocus2(true);
+                    }}
+                    onBlur={() => {
+                          setIsFocus2(false);
+                       
+                      }}
                     />
                     <div
                       onClick={() => setPassword1(!password1)}
@@ -173,18 +203,19 @@ const Register = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                {/* <FormLabel>Confirm passwordd</FormLabel> */}
                 <FormControl>
-                  <div className="text grid h-12 grid-cols-12 border  rounded-lg ">
+                  <div className={`text grid ${isFocus3 && "bg-gray-100"} h-12 grid-cols-12 border  rounded-lg`}>
                     <Input
-                      value={field.value}
-                      onChange={(value) => {
-                        validatePassword(value.target.value);
-                        field.onChange(value);
-                      }}
-                      className="border-0 h-full focus-visible:ring-0 shadow-none col-span-11"
-                      placeholder="Re-enter your password"
                       type={password2 ? "text" : "password"}
+                      placeholder="Confirm your password"
+                      {...field}
+                      className="border-0 h-full focus-visible:ring-0 shadow-none col-span-11"
+                      onFocus={() => {
+                        setIsFocus3(true);
+                      }}
+                      onBlur={() => {
+                        setIsFocus3(false);
+                      }}
                     />
                     <div
                       onClick={() => setPassword2(!password2)}
@@ -209,71 +240,146 @@ const Register = () => {
               </FormItem>
             )}
           />
-      <div className="text">
-        <div className="text-base grid grid-cols-3  ">
-          <div className="text grid grid-cols-1">Password quality:-</div>
-          <div className="text col-span-2 flex justify-center items-center">
-            <Progress
-              value={progress}
-              className={`${
-                progress <= 20
-                  ? "bg-red-600"
-                  : progress === 40
-                  ? "bg-orange-500"
-                  : progress === 60
-                  ? "bg-yellow-500"
-                  : progress === 80
-                  ? "bg-lime-500"
-                  : "bg-green-500"
-              }`}
-            />
-          </div>
-        </div>
-        <ul className="text-sm text-gray-600">
-          {[
-            { test: /.{8,}/, message: "At least 8 characters" },
-            { test: /[A-Z]/, message: "One uppercase letter" },
-            { test: /[a-z]/, message: "One lowercase letter" },
-            { test: /[0-9]/, message: "One number" },
-            { test: /[@#$!%*?&]/, message: "One special character" },
-          ].map((__, index) => (
-            <li key={index}>
-              {index + 1 <= 1 && (
-                <VerticalTextSlider
-                  className={"text-black font-normal text-end"}
-                  data={[
-                    "At least 8 characters",
-                    "At least one uppercase letter",
-                    "At least one lowercase letter",
-                    "At least one number",
-                    "At least one special character",
-                  ]}
-                  delayValue={0.5}
+          <div className="text">
+            <div className="text grid grid-cols-3  ">
+              <div className="text-gray-600 grid grid-cols-1">
+                Password quality:-
+              </div>
+              <div className="text col-span-2 flex justify-center items-center">
+                <Progress
+                  value={progress}
+                  className={`${
+                    progress <= 20
+                      ? "bg-red-600"
+                      : progress === 40
+                      ? "bg-orange-500"
+                      : progress === 60
+                      ? "bg-yellow-500"
+                      : progress === 80
+                      ? "bg-lime-500"
+                      : "bg-green-500"
+                  }`}
                 />
-              )}
-            </li>
-          ))}
-        </ul>
-        <p className="text-sm  text-gray-400 flex ">
-          <IoIosInformationCircleOutline
-            size={24}
-            className="text-sky-400 mr-1"
-          />
-          {`Don't use a password from another site, or something too obvious
-                like your pet's name.`}
-        </p>
-      </div>
+              </div>
+            </div>
+            <ul className="text-sm text-gray-600">
+              {[
+                { test: /.{8,}/, message: "At least 8 characters" },
+                { test: /[A-Z]/, message: "One uppercase letter" },
+                { test: /[a-z]/, message: "One lowercase letter" },
+                { test: /[0-9]/, message: "One number" },
+                { test: /[@#$!%*?&]/, message: "One special character" },
+              ].map((__, index) => (
+                <li key={index}>
+                  {index + 1 <= 1 && (
+                    <VerticalTextSlider
+                      className={"text-black font-normal text-end"}
+                      data={[
+                        "At least 8 characters",
+                        "At least one uppercase letter",
+                        "At least one lowercase letter",
+                        "At least one number",
+                        "At least one special character",
+                      ]}
+                      delayValue={0.5}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm items-center text-gray-400 flex ">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild className="truncate">
+                    <span className="truncate cursor-pointer">
+                      <IoIosInformationCircleOutline
+                        size={24}
+                        className="text-sky-400 mr-1"
+                      />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent data-align="end" className="bg-gray-100">
+                    <span className="">
+                      <span className="text-gray-600">
+                        Don't use a password from another site, or something too
+                        obvious like your pet's name.
+                      </span>
+                      <p className="text mt-2">
+                        You password have to meet up with the conditions below:{" "}
+                      </p>
+                      <ul className="text-gray-600 list-inside list-disc">
+                        <li>At least 8 characters</li>
+                        <li>At least one uppercase letter</li>
+                        <li>At least one lowercase letter</li>
+                        <li>At least one number</li>
+                        <li>At least one special character(@#$!%*?&)</li>
+                        <li>Both passwords must matched</li>
+                      </ul>
+                    </span>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              {`Can't sign up?`}
+            </p>
+          </div>
           <div className="text">
             <Button
-              disabled={progress < 80}
+              //   disabled={progress < 80}
               type="submit"
-              className="w-full h-12 text-white bg-amber-700"
+              className="w-full h-12 text-white bg-amber-700 relative overflow-hidden group"
             >
-              Submit
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
+              <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
+              <span className="relative font-bold">Sign up</span>
             </Button>
           </div>
         </form>
       </Form>
+      <div className="text py-2 flex justify-between items-center">
+        <span className="text-gray-600 italic">Already have an account</span>
+        <button
+          onClick={() => {
+            router.push(
+              pathName +
+                "?" +
+                createSearchQueryString("registration-type", "login")
+            );
+          }}
+          className="text-sky-600 underline"
+        >
+          Log in
+        </button>
+      </div>
+      <div className="text-center relative my-5 flex items-center py-3">
+        <Separator />
+        <span className="text absolute flext justify-center bg-white p-2 rounded-full left-[45%]">
+          OR
+        </span>
+      </div>
+      <div className="text w-full grid pb-8 gap-3">
+        <button
+          onClick={() => signIn("google")}
+          className="text-black hover:bg-gray-50 flex items-center justify-center border px-5 rounded-lg py-3  relative overflow-hidden group"
+        >
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-gray-200 via-gray-100 to-gray-100 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
+          <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
+          <span className="relative flex items-center gap-2">
+            <FcGoogle size={25} />
+            <span className="text">Sign up with google</span>
+          </span>
+        </button>
+        <button
+          onClick={() => signIn("github")}
+          className="text-black hover:bg-gray-50 flex items-center justify-center border px-5 rounded-lg py-3  relative overflow-hidden group"
+        >
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-gray-200 via-gray-100 to-gray-100 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
+          <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>
+          <span className="relative flex items-center gap-2">
+            <FaGithub size={25} />
+            <span className="text">Sign up with github</span>
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

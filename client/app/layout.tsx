@@ -74,7 +74,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={workSans.variable}>
           <FirstNavbar />
-          <ToastContainer /> 
+          <ToastContainer />
           {children}
           <div className="">
             <FooterContactBanner />

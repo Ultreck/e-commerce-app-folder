@@ -47,7 +47,7 @@ const ProductDetailsPage = ({ params,}: { params: Promise<{ id: string }>}) => {
   const [cartIds, setCartIds] = useState<string[]>([])
   const addCartItem = userCartItemsStore((state) => state.addCartItem);
   const [data, setData] = useState<ItemData | undefined>(undefined);
-
+  // const {pathName} = useSe
 
   useEffect(() => {
     const cartStoredData =  userCartItemsStore.getState().cartCardsDatas;
@@ -72,6 +72,7 @@ const ProductDetailsPage = ({ params,}: { params: Promise<{ id: string }>}) => {
 
   return (
     <div>
+      {/* <BreadCrumbComponent items={[{label: "Home", href: "/"}, {label: "Product-details", href: "/cart"},]}/> */}
       <div className="text grid grid-cols-1 md:grid-cols-2 mt-2 w-full">
         <div className="text">
           <div className="text flex pl-5 mt-5">

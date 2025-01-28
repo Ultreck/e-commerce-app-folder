@@ -21,7 +21,6 @@ const FirstNavbar = () => {
   const [cartIds, setCartIds] = useState<string[]>([]);
   const [wishListIds, setWishListIds] = useState<string[]>([]);
   const { pathName } = useSearchQuery();
-  console.log(pathName);
   useEffect(() => {
     const cartStoredData = userCartItemsStore.getState().cartCardsDatas;
     setCartIds(cartStoredData);
