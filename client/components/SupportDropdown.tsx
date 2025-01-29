@@ -42,6 +42,7 @@ const SupportDropdown = () => {
                           createSearchQueryString("support-type", value.text)
                         : value.link
                     }
+                    prefetch
                   >
                     {value.text}
                   </Link>

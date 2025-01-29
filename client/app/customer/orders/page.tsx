@@ -33,6 +33,7 @@ const CustomerOrders = () => {
                       : "text-gray-400"
                   }`}
                   href={"#"}
+                  prefetch
                 >
                   {tab}
                 </Link>

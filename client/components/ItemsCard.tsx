@@ -48,7 +48,7 @@ const ItemsCard: React.FC<CardDataType> = ({ data }) => {
     >
       <CardContent className="p-0 pb-5">
         <div className="text relative">
-          <Link href={`/product-details/${data.id}`}>
+          <Link href={`/product-details/${data.id}`} prefetch>
             <img src={data.imgs[0].src} alt="" className="text w-full h-72" />
           </Link>
           <div className="text absolute  bottom-0 px-2">

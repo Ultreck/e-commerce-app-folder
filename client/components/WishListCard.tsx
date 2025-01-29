@@ -13,7 +13,7 @@ const WishListCard = ({ data }: { data: ItemData }) => {
       <div className="text border-2 gap-3 w-full my-5 rounded flex items-center px-5 py-3">
         <div className="text w-32 h-28 rounded-md bg-gray-200">
           <div className="text h-28 w-32 bg-gray-200 ">
-            <Link href={`/product-details/${data.id}`}>
+            <Link href={`/product-details/${data.id}`} prefetch>
               <img
                 src={data.imgs[0].src}
                 alt=""

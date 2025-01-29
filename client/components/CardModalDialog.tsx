@@ -318,6 +318,7 @@ const CardModalDialog: React.FC<CardDataType> = ({ data, children }) => {
                 <Link
                   className="hover:tracking-[0.2em] tracking-[0.1em] text-[#23941A] font-semibold"
                   href={`/product-details/${data.id}`}
+                  prefetch
                 >
                   <button className="flex items-center  mt-3">
                     See full details{" "}

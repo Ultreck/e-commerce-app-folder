@@ -43,7 +43,7 @@ const CartSubTotalComponent = () => {
         </div>
       </div>
       <div className="text mt-8">
-        <Link href={`/product-order-checkout`}>
+        <Link href={`/product-order-checkout`} prefetch>
         <button className="text rounded-full py-2 bg-amber-700 text-white relative overflow-hidden group w-full">
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r rounded from-amber-900 via-amber-700 to-amber-400 translate-x-full transition-transform duration-500 group-hover:translate-x-0"></span>
           <span className="absolute inset-0 w-full h-full  group-hover:opacity-0"></span>

@@ -36,6 +36,7 @@ const CustomerAccountSidebar = () => {
                   : ""
               } cursor-pointer hover:bg-amber-100/50 flex gap-2 items-center`}
               key={profile.name}
+              prefetch
             >
               <div className="text-lg lg:text-2xl">{profile.icon}</div>
               <div className="flex cursor-pointer justify-between hover:bg-transparent py-3 transition-transform duration-500">
@@ -53,6 +54,7 @@ const CustomerAccountSidebar = () => {
               href={"#"}
               className={`text-red-500 cursor-pointer px-2 hover:bg-gray-100 flex gap-2 items-center`}
               key={profile.name}
+              prefetch
             >
               <div className="text-2xl">{profile.icon}</div>
               <div className="flex cursor-pointer justify-between py-3 hover:bg-transparent hover:text-red-500 transition-transform duration-500">

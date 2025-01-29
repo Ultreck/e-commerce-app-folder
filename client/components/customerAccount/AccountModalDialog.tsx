@@ -99,6 +99,7 @@ const AccountModalDialog = () => {
                       href={profile?.link}
                       className="text px-2 cursor-pointer hover:bg-gray-100 flex gap-2 items-center"
                       key={profile.name}
+                      prefetch
                     >
                       <div className="text-2xl">{profile.icon}</div>
                       <DropdownMenuItem className="flex cursor-pointer justify-between hover:bg-transparent py-3 transition-transform duration-500">
@@ -115,6 +116,7 @@ const AccountModalDialog = () => {
                       href={"#"}
                       className="text-red-500 cursor-pointer px-2 hover:bg-gray-100 flex gap-2 items-center"
                       key={profile.name}
+                      prefetch
                     >
                       <div className="text-2xl">{profile.icon}</div>
                       <DropdownMenuItem className="flex cursor-pointer justify-between py-3 hover:bg-transparent hover:text-red-500 transition-transform duration-500">

@@ -38,7 +38,7 @@ const FirstNavbar = () => {
     >
       <div className="text flex items-center justify-center w-1/2 gap-5">
         <div className="text">
-          <Link href={"/"}>
+          <Link href={"/"} prefetch>
             <div className="text flex gap-1 font-mono">
               <TbHexagonLetterSFilled size={48} className="text-amber-700" />
               <div className="text  ">
@@ -67,7 +67,7 @@ const FirstNavbar = () => {
         <div className="text">
           <LocationField />
         </div>
-        <Link href={"/customer/wishlist"}>
+        <Link href={"/customer/wishlist"} prefetch>
           <button
             onMouseEnter={() => {
               setIsHovered(true);
@@ -91,7 +91,7 @@ const FirstNavbar = () => {
             Wishlist
           </button>
         </Link>
-        <Link href={"/cart"}>
+        <Link href={"/cart"} prefetch>
           <button
             onMouseEnter={() => {
               setIsHovered(true);
@@ -118,7 +118,7 @@ const FirstNavbar = () => {
             </span>
           </button>
         </Link>
-        <Link href={`/login`}>
+        <Link href={`/login`} prefetch>
           <div className="text">
             <SignInButton text={"Sign In"} className={""} />
           </div>

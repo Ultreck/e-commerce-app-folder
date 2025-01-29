@@ -50,7 +50,7 @@ const Footer = () => {
               <li className="text py-2" key={index}>
                 {" "}
                 <p className="text">
-                  <Link href={"/"}>{list}</Link>
+                  <Link href={"/"} prefetch>{list}</Link>
                 </p>
               </li>
             ))}
@@ -71,7 +71,7 @@ const Footer = () => {
               <li className="text py-2" key={index}>
                 {" "}
                 <p className="text">
-                  <Link href={"/"}>{list}</Link>
+                  <Link href={"/"} prefetch>{list}</Link>
                 </p>
               </li>
             ))}
@@ -92,7 +92,7 @@ const Footer = () => {
               <li className="text py-2" key={index}>
                 {" "}
                 <p className="text">
-                  <Link href={"/"}>{list}</Link>
+                  <Link href={"/"} prefetch>{list}</Link>
                 </p>
               </li>
             ))}
@@ -113,7 +113,7 @@ const Footer = () => {
               <li className="text py-2" key={index}>
                 {" "}
                 <p className="text">
-                  <Link href={"/"}>{list}</Link>
+                  <Link href={"/"} prefetch>{list}</Link>
                 </p>
               </li>
             ))}
@@ -134,7 +134,7 @@ const Footer = () => {
               <li className="text py-2" key={index}>
                 {" "}
                 <p className="text">
-                  <Link href={"/"}>{list}</Link>
+                  <Link href={"/"} prefetch>{list}</Link>
                 </p>
               </li>
             ))}
@@ -142,15 +142,15 @@ const Footer = () => {
         </div>
       </div>
       <div className="text w-full flex justify-between mt-7 items-center">
-        <p className="text">Copyright 2024. All rights reserved</p>
+        <p className="text">Copyright 2025. All rights reserved</p>
         <p className="text flex justify-between items-center gap-2">
-          <Link className="text border p-2 rounded-full"  href={"/"}>
+          <Link className="text border p-2 rounded-full"  href={"/"} prefetch>
               <FaFacebookF className="text-blue-600" />
           </Link>
-          <Link className="text border p-2 rounded-full" href={"/"}>
+          <Link className="text border p-2 rounded-full" href={"/"} prefetch>
               <FaTwitter className="text-blue-600" />
           </Link>
-          <Link className="text border p-2 rounded-full" href={"/"}>
+          <Link className="text border p-2 rounded-full" href={"/"} prefetch>
               <IoLogoInstagram className="text-purple-600" />
           </Link>
         </p>

@@ -60,7 +60,7 @@ const CartTable = () => {
                 <div className="text grid col-span-3">
                   <div className="text flex items-center gap-3 ">
                     <div className="text my-2 h-20 w-20 bg-gray-400">
-                      <Link href={`/product-details/${matched.id}`}>
+                      <Link href={`/product-details/${matched.id}`} prefetch>
                         <img
                           src={matched.imgs[0].src}
                           alt=""
@@ -69,7 +69,7 @@ const CartTable = () => {
                       </Link>
                     </div>
                     <div className="text">
-                      <Link href={`/product-details/${matched.id}`}>
+                      <Link href={`/product-details/${matched.id}`} prefetch>
                         <div className="text mt-1 truncate w-48">
                           {matched.description}
                         </div>

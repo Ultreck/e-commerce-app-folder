@@ -31,6 +31,7 @@ const SupportSidebar = () => {
                 : ""
             } cursor-pointer hover:bg-amber-100/50 flex gap-2 items-center`}
             key={support.name}
+            prefetch
           >
             <div className="flex cursor-pointer justify-between hover:bg-transparent py-3 transition-transform duration-500">
               {support.name}
