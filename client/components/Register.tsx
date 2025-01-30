@@ -105,7 +105,7 @@ const Register = () => {
     return passedConditions;
   };
   return (
-    <div className="xl:w-1/3 lg:w-2/5 md:w-1/2 w-3/4 bg-white h-auto px-8 rounded-lg shadow-lg">
+    <div className="xl:w-1/3 lg:w-2/5 md:w-1/2 w-3/4 bg-white h-auto px-8 rounded-lg border-t shadow-xl">
       <div className="text pt-5">
         <div className="text">
           <Link href={"/"} prefetch>
