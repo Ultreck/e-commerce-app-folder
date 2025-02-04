@@ -1,4 +1,3 @@
-// import { CardDataType } from "@/types/typeFiles";
 import { create } from "zustand";
 
 interface locationData {
