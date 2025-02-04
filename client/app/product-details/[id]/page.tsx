@@ -107,8 +107,6 @@ const ProductDetailsPage = ({ params,}: { params: Promise<{ id: string }>}) => {
             </div>
             <Carousel
               plugins={[plugin.current]}
-              // onMouseEnter={plugin.current.stop}
-              // onMouseLeave={plugin.current.reset}
               setApi={setApi}
               className="w-4/5 mx-auto "
             >

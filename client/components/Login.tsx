@@ -197,7 +197,6 @@ const Login = () => {
           </div>
           <div className="text">
             <Button
-              //   disabled={progress < 80}
               type="submit"
               className="w-full h-12 text-white bg-amber-700 relative overflow-hidden group"
             >
