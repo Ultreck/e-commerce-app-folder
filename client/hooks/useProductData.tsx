@@ -63,7 +63,6 @@ const useProductData = () => {
       }
     }
   };
-  // console.log(cartDatas);
   
 
   return {

@@ -8,7 +8,6 @@ import { GrShieldSecurity } from "react-icons/gr";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
-// import { TbCurrencyNaira } from "react-icons/tb";
 
 import banner0 from "../assets/images/banner0.jpg";
 import banner1 from "../assets/images/banner1.jpg";
