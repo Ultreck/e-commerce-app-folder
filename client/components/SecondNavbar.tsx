@@ -7,7 +7,6 @@ import { userLocationStore } from "@/store/userLocationState";
 import AccountModalDialog from "./customerAccount/AccountModalDialog";
 interface ClientLocation {
   city: string;
-  // Add other properties if needed
 }
 
 const SecondNavbar = () => {
