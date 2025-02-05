@@ -51,7 +51,7 @@ const getCartFromLocalStorage = () => {
     const storedCart = window?.localStorage.getItem("cartCardsDatas");
     return storedCart ? JSON.parse(storedCart) : [];
   }
-  return []; // Fallback for SSR
+  return [];
 };
 
 const setCartToLocalStorage = (cart: string[]) => {
