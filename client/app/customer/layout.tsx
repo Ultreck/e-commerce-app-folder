@@ -4,7 +4,7 @@ import CustomerAccountSidebar from "@/components/customerAccount/CustomerAccount
 import useSearchQuery from "@/hooks/useSearchQuery";
 import React from "react";
 
-const customerAccount = ({
+const CustomerAccount = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -27,4 +27,4 @@ const customerAccount = ({
   );
 };
 
-export default customerAccount;
+export default CustomerAccount;
