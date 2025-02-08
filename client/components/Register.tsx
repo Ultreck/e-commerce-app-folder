@@ -301,8 +301,8 @@ const Register = () => {
                   <TooltipContent data-align="end" className="bg-gray-100">
                     <span className="">
                       <span className="text-gray-600">
-                        Don't use a password from another site, or something too
-                        obvious like your pet's name.
+                        Don&apos;t use a password from another site, or something too
+                        obvious like your pet&apos;s name.
                       </span>
                       <p className="text mt-2">
                         You password have to meet up with the conditions below:{" "}

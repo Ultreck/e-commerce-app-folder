@@ -179,13 +179,13 @@ const Login = () => {
                         <li>Enter the correct password</li>
                         <li>
                           You can sign in with third party(alternate way)
-                          "Google" or "Github"
+                          &quot;Google&quot; or &quot;Github&quot;
                         </li>
                         <li>
-                          Click on "forgot password" to reset your password
+                          Click on &quot;forgot password&quot; to reset your password
                         </li>
                         <li>
-                          If you don't have an existing account click on "Sign up" to create one.
+                          If you don&apos;t have an existing account click on &quot;Sign up&quot; to create one.
                         </li>
                       </ul>
                     </span>
