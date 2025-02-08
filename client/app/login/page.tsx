@@ -1,6 +1,6 @@
 'use client'
 import Login from "@/components/Login";
-import ParticlesBackground from "@/components/ParticlesBackground";
+// import ParticlesBackground from "@/components/ParticlesBackground";
 import Register from "@/components/Register";
 import useSearchQuery from "@/hooks/useSearchQuery";
 import React from "react";
@@ -17,7 +17,7 @@ const LoginPage = () => {
         <Register />
       )}
       <div className="text -z-20">
-        <ParticlesBackground id="particles" />
+        {/* <ParticlesBackground id="particles" /> */}
       </div>
     </div>
   );
